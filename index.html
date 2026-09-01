@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>啤酒宇宙指南 · Beer Universe Guide</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+Qing+Ke+Huang+You&family=Orbitron:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+/* ============================================================
+   啤酒宇宙指南 · 设计 Token
+   ============================================================ */
+:root{
+  --bg-deep:#070a1a;        /* 深空底色 */
+  --bg-space:#0c1130;       /* 星空层 */
+  --bg-panel:rgba(18,24,58,.72);  /* 玻璃面板 */
+  --bg-panel-solid:#141a3a;
+  --ink:#f4f1e8;            /* 泡沫白主文字 */
+  --muted:#9aa3c7;          /* 星尘灰 */
+  --faint:#6b7398;          /* 更暗文字 */
+  --gold:#ffc24b;           /* 麦芽金 · 主强调 */
+  --amber:#e08a3c;          /* 琥珀 */
+  --violet:#8e7cf5;         /* 星云紫 */
+  --cyan:#5bd0e0;           /* 气泡青 */
+  --line:rgba(154,163,199,.16);
+  --radius:20px;
+  --shadow:0 24px 60px rgba(0,0,0,.5);
+  --display:'ZCOOL Qing Ke Huang You','Noto Sans SC',sans-serif;
+  --digit:'Orbitron','Noto Sans SC',monospace;
+  --body:'Noto Sans SC',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 700px at 85% -10%,rgba(142,124,245,.14),transparent 60%),
+    radial-gradient(1000px 600px at 10% 20%,rgba(91,208,224,.08),transparent 55%),
+    var(--bg-deep);
+  min-height:100vh;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(255,194,75,.3)}
+a{color:inherit}
+
+/* ---- 星空背景层 ---- */
+.stars,.stars::after,.stars::before{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+}
+.stars{
+  background-image:
+    radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.7),transparent 100%),
+    radial-gradient(1px 1px at 40% 70%,rgba(255,255,255,.5),transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 20%,rgba(255,255,255,.6),transparent 100%),
+    radial-gradient(1px 1px at 80% 60%,rgba(255,255,255,.4),transparent 100%),
+    radial-gradient(1.5px 1.5px at 10% 80%,rgba(255,255,255,.45),transparent 100%),
+    radial-gradient(1px 1px at 30% 10%,rgba(255,255,255,.5),transparent 100%),
+    radial-gradient(2px 2px at 55% 50%,rgba(255,255,255,.35),transparent 100%),
+    radial-gradient(1px 1px at 90% 85%,rgba(255,255,255,.6),transparent 100%),
+    radial-gradient(1.5px 1.5px at 70% 40%,rgba(255,255,255,.4),transparent 100%),
+    radial-gradient(1px 1px at 15% 55%,rgba(255,255,255,.5),transparent 100%);
+  background-repeat:repeat;
+  background-size:520px 520px;
+  opacity:.5;
+  animation:twinkle 9s ease-in-out infinite alternate;
+}
+@keyframes twinkle{from{opacity:.32}to{opacity:.6}}
+
+/* ============================================================
+   顶部导航
+   ============================================================ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 26px;
+  background:rgba(7,10,26,.62);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.brand .logo{
+  width:38px;height:38px;border-radius:50%;
+  background:radial-gradient(circle at 32% 30%,#ffe9b8,#ffc24b 45%,#b8742a 100%);
+  box-shadow:0 0 18px rgba(255,194,75,.55),inset 0 -4px 8px rgba(120,60,10,.5);
+  position:relative;flex:none;
+}
+.brand .logo::after{
+  content:"";position:absolute;inset:-5px;border-radius:50%;
+  border:1px dashed rgba(255,194,75,.5);animation:orbit 8s linear infinite;
+}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.brand b{font-family:var(--display);font-size:20px;letter-spacing:.5px;color:var(--ink)}
+.brand em{font-style:normal;font-family:var(--digit);font-size:9px;color:var(--gold);letter-spacing:2px;display:block;margin-top:-4px}
+.navbtns{display:flex;gap:10px}
+.btn{
+  font-family:var(--body);font-size:14px;font-weight:500;
+  border:1px solid var(--line);background:var(--bg-panel);color:var(--ink);
+  padding:9px 16px;border-radius:999px;cursor:pointer;
+  transition:all .2s ease;min-height:40px;display:inline-flex;align-items:center;gap:8px;
+}
+.btn:hover{border-color:rgba(255,194,75,.6);color:var(--gold);transform:translateY(-1px)}
+.btn.primary{
+  background:linear-gradient(135deg,#ffd47a,#f0a63c);border-color:transparent;color:#2a1c05;font-weight:700;
+}
+.btn.primary:hover{color:#2a1c05;box-shadow:0 6px 22px rgba(255,194,75,.4)}
+.btn .ico{width:16px;height:16px;flex:none}
+.btn.on{background:rgba(255,194,75,.16);border-color:rgba(255,194,75,.7);color:var(--gold)}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{
+  position:relative;z-index:1;
+  min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:120px 22px 60px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:-1;
+  background:url("https://aka.doubaocdn.com/s/64HUcCNczc") center 30% / cover no-repeat;
+  -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 55%,transparent 100%);
+  opacity:.75;
+}
+.hero-kicker{
+  font-family:var(--digit);font-size:12px;letter-spacing:6px;color:var(--gold);
+  text-transform:uppercase;margin-bottom:18px;
+  display:flex;align-items:center;gap:14px;
+}
+.hero-kicker::before,.hero-kicker::after{
+  content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));
+}
+.hero-kicker::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.hero h1{
+  font-family:var(--display);font-size:clamp(44px,8vw,92px);line-height:1.05;
+  letter-spacing:2px;font-weight:400;
+  background:linear-gradient(180deg,#fff7e0 10%,#ffd47a 55%,#e08a3c 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 8px 40px rgba(255,194,75,.25);
+  filter:drop-shadow(0 4px 24px rgba(255,194,75,.25));
+}
+.hero-sub{
+  margin-top:16px;max-width:560px;color:var(--muted);font-size:clamp(14px,2vw,17px);font-weight:300;
+}
+.hero-stats{
+  display:flex;gap:clamp(18px,5vw,56px);margin-top:38px;flex-wrap:wrap;justify-content:center;
+}
+.hstat{text-align:center;min-width:84px}
+.hstat .n{
+  font-family:var(--digit);font-size:clamp(26px,4vw,40px);font-weight:700;color:var(--ink);
+  display:block;line-height:1.1;
+}
+.hstat .n.gold{color:var(--gold)}
+.hstat .n.violet{color:var(--violet)}
+.hstat .n.cyan{color:var(--cyan)}
+.hstat span{font-size:12px;color:var(--muted);letter-spacing:1px}
+
+/* 搜索框 */
+.searchwrap{
+  margin-top:44px;width:min(640px,92vw);position:relative;
+}
+.searchwrap svg{
+  position:absolute;left:20px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--muted);
+}
+.searchwrap input{
+  width:100%;padding:18px 54px 18px 54px;border-radius:999px;
+  background:rgba(20,26,58,.78);border:1px solid var(--line);color:var(--ink);
+  font-size:16px;font-family:var(--body);outline:none;
+  transition:border-color .2s,box-shadow .2s;min-height:56px;
+}
+.searchwrap input::placeholder{color:var(--faint)}
+.searchwrap input:focus{border-color:rgba(255,194,75,.65);box-shadow:0 0 0 4px rgba(255,194,75,.12)}
+.searchwrap .kbd{
+  position:absolute;right:18px;top:50%;transform:translateY(-50%);
+  font-family:var(--digit);font-size:11px;color:var(--faint);
+  border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:rgba(255,255,255,.04);
+}
+
+/* ============================================================
+   控制栏：星系切换 + 星群筛选
+   ============================================================ */
+.controls{
+  position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:6px 22px 8px;
+}
+.galaxy-tabs{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:18px;
+}
+.gtab{
+  font-family:var(--body);font-size:14px;padding:10px 22px;border-radius:999px;
+  border:1px solid var(--line);background:var(--bg-panel);color:var(--muted);cursor:pointer;
+  transition:all .2s;min-height:42px;
+}
+.gtab:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
+.gtab.active{
+  background:linear-gradient(135deg,rgba(255,194,75,.2),rgba(240,166,60,.08));
+  border-color:rgba(255,194,75,.75);color:var(--gold);font-weight:600;
+}
+.gtab .cnt{font-family:var(--digit);font-size:11px;opacity:.75;margin-left:6px}
+.style-filter{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;
+}
+.schip{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(15,20,46,.6);color:var(--muted);
+  font-size:13px;cursor:pointer;transition:all .2s;min-height:36px;
+}
+.schip .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.schip:hover{color:var(--ink);transform:translateY(-1px)}
+.schip.active{color:var(--ink);border-color:var(--sc,var(--gold));background:color-mix(in srgb,var(--sc,var(--gold)) 14%,transparent);font-weight:600}
+.schip .n{font-family:var(--digit);font-size:10px;opacity:.7}
+.filter-row{
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin:6px 0 30px;
+}
+.love-toggle{
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;user-select:none;
+  font-size:13px;color:var(--muted);min-height:40px;padding:0 6px;
+}
+.love-toggle input{display:none}
+.love-toggle .track{
+  width:40px;height:22px;border-radius:999px;background:rgba(255,255,255,.1);
+  position:relative;transition:background .2s;border:1px solid var(--line);flex:none;
+}
+.love-toggle .track::after{
+  content:"";position:absolute;top:2px;left:3px;width:16px;height:16px;border-radius:50%;
+  background:var(--muted);transition:all .2s;
+}
+.love-toggle input:checked + .track{background:rgba(255,194,75,.4);border-color:rgba(255,194,75,.7)}
+.love-toggle input:checked + .track::after{left:20px;background:var(--gold);box-shadow:0 0 10px rgba(255,194,75,.8)}
+.result-count{font-family:var(--digit);font-size:12px;color:var(--faint);letter-spacing:1px}
+.result-count b{color:var(--gold)}
+
+/* ============================================================
+   卡片网格
+   ============================================================ */
+.beer-grid{
+  position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:10px 22px 70px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:22px;
+}
+.card{
+  position:relative;border-radius:var(--radius);padding:22px 20px 18px;
+  background:linear-gradient(160deg,rgba(24,31,70,.85),rgba(13,17,40,.92));
+  border:1px solid var(--line);cursor:pointer;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  overflow:hidden;display:flex;flex-direction:column;gap:12px;
+}
+.card::before{
+  content:"";position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;
+  background:radial-gradient(320px 200px at var(--hx,70%) var(--hy,0%),color-mix(in srgb,var(--sc,var(--gold)) 12%,transparent),transparent 70%);
+  opacity:0;transition:opacity .3s;
+}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--sc,var(--gold)) 55%,transparent)}
+.card:hover::before{opacity:1}
+.card .fav-badge{
+  position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;
+  display:none;align-items:center;justify-content:center;z-index:2;
+  background:radial-gradient(circle,#fff3cf,#ffc24b 60%,#d98f24);
+  box-shadow:0 0 16px rgba(255,194,75,.85);animation:starPulse 2.4s ease-in-out infinite;
+}
+.card .fav-badge.show{display:flex}
+.card .fav-badge svg{width:16px;height:16px;color:#7a4b08}
+@keyframes starPulse{0%,100%{box-shadow:0 0 12px rgba(255,194,75,.6)}50%{box-shadow:0 0 24px rgba(255,194,75,1)}}
+
+/* 星球视觉 */
+.planet{
+  width:86px;height:86px;border-radius:50%;margin:6px auto 2px;position:relative;flex:none;
+  background:radial-gradient(circle at 32% 28%,#fff 0%,color-mix(in srgb,var(--sc,var(--gold)) 85%,#fff) 22%,var(--sc,var(--gold)) 55%,color-mix(in srgb,var(--sc,var(--gold)) 40%,#000) 100%);
+  box-shadow:inset -10px -12px 26px rgba(0,0,0,.55),0 0 30px color-mix(in srgb,var(--sc,var(--gold)) 40%,transparent);
+}
+.planet::after{
+  content:"";position:absolute;inset:-9px;border-radius:50%;
+  border:2px dashed color-mix(in srgb,var(--sc,var(--gold)) 55%,transparent);
+  animation:orbit 14s linear infinite;
+}
+.planet .bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,.5)}
+.card h3{
+  font-family:var(--display);font-size:19px;font-weight:400;letter-spacing:.5px;line-height:1.3;
+  text-align:center;color:var(--ink);
+}
+.card .meta{
+  text-align:center;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+}
+.card .meta .sep{color:var(--faint)}
+.card .style-chip{
+  display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--sc,var(--gold));
+  border:1px solid color-mix(in srgb,var(--sc,var(--gold)) 45%,transparent);
+  background:color-mix(in srgb,var(--sc,var(--gold)) 10%,transparent);
+  padding:3px 10px;border-radius:999px;width:fit-content;margin:0 auto;
+}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:auto;padding-top:4px}
+.card .tags span{
+  font-size:11px;color:var(--muted);background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07);padding:3px 9px;border-radius:999px;
+}
+.card .hint{text-align:center;font-size:11px;color:var(--faint);letter-spacing:1px;font-family:var(--digit)}
+.userflag{
+  position:absolute;bottom:14px;left:14px;font-size:10px;font-family:var(--digit);
+  color:var(--cyan);border:1px solid rgba(91,208,224,.4);padding:2px 7px;border-radius:6px;letter-spacing:1px;
+}
+
+/* 空态 */
+.empty{
+  grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--muted);
+}
+.empty .planet-big{
+  width:90px;height:90px;margin:0 auto 22px;border-radius:50%;position:relative;
+  background:radial-gradient(circle at 32% 28%,#4a5578,#2a3052 60%,#161a33);
+  border:1px solid var(--line);
+}
+.empty .planet-big::after{
+  content:"";position:absolute;inset:-11px;border-radius:50%;border:2px dashed rgba(154,163,199,.35);animation:orbit 16s linear infinite;
+}
+.empty h3{font-family:var(--display);font-size:22px;font-weight:400;margin-bottom:10px;color:var(--ink)}
+.empty p{font-size:14px;max-width:420px;margin:0 auto 22px}
+.empty .btn{margin:0 4px}
+
+/* ============================================================
+   宇宙档案 · 统计区
+   ============================================================ */
+.archive{
+  position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:60px 22px 80px;
+}
+.archive-head{text-align:center;margin-bottom:40px}
+.archive-head .eyebrow{
+  font-family:var(--digit);font-size:11px;letter-spacing:5px;color:var(--violet);text-transform:uppercase;margin-bottom:10px;
+}
+.archive-head h2{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:400;letter-spacing:1px}
+.archive-head p{color:var(--muted);font-size:14px;margin-top:10px;font-weight:300}
+.archive-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.panel{
+  background:linear-gradient(160deg,rgba(24,31,70,.7),rgba(13,17,40,.85));
+  border:1px solid var(--line);border-radius:var(--radius);padding:30px 30px 34px;
+}
+.panel h3{font-family:var(--display);font-size:18px;font-weight:400;letter-spacing:.5px;margin-bottom:6px}
+.panel .sub{font-size:12px;color:var(--faint);margin-bottom:24px}
+.donut-wrap{display:flex;align-items:center;gap:34px;flex-wrap:wrap;justify-content:center}
+.legend{display:flex;flex-direction:column;gap:14px}
+.legend .li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
+.legend .li .sw{width:12px;height:12px;border-radius:4px;flex:none}
+.legend .li b{font-family:var(--digit);color:var(--ink);font-size:15px;margin-left:auto;padding-left:20px}
+.bars{display:flex;flex-direction:column;gap:13px}
+.bar-row{display:grid;grid-template-columns:64px 1fr 44px;align-items:center;gap:12px;font-size:13px}
+.bar-row .lbl{color:var(--muted);display:flex;align-items:center;gap:8px}
+.bar-row .lbl .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.bar-track{height:10px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}
+.bar-fill{height:100%;border-radius:999px;width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.bar-row .v{font-family:var(--digit);color:var(--ink);text-align:right;font-size:13px}
+
+/* ============================================================
+   底部
+   ============================================================ */
+.footer{
+  position:relative;z-index:2;text-align:center;padding:40px 20px 54px;color:var(--faint);font-size:12.5px;
+  border-top:1px solid var(--line);
+}
+.footer .star-line{font-family:var(--digit);letter-spacing:8px;color:var(--gold);font-size:14px;margin-bottom:8px;opacity:.8}
+
+/* ============================================================
+   弹层
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px;
+}
+.modal.open{display:flex}
+.modal .backdrop{
+  position:absolute;inset:0;background:rgba(4,6,16,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.modal-box{
+  position:relative;width:min(620px,94vw);max-height:88vh;overflow-y:auto;
+  background:linear-gradient(165deg,#1a2148,#10143a 60%,#0c1029);
+  border:1px solid rgba(154,163,199,.2);border-radius:24px;padding:34px 34px 30px;
+  box-shadow:0 40px 120px rgba(0,0,0,.7);
+  animation:popIn .28s cubic-bezier(.2,.9,.3,1.2);
+}
+@keyframes popIn{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
+.modal-close{
+  position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--muted);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:16px;
+}
+.modal-close:hover{color:var(--ink);border-color:rgba(255,255,255,.4);transform:rotate(90deg)}
+.modal-box h2{font-family:var(--display);font-size:30px;font-weight:400;letter-spacing:1px;line-height:1.25;padding-right:40px}
+.modal-box .sub-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 22px;font-size:13px;color:var(--muted)}
+.modal-box .sub-line .c{color:var(--sc,var(--gold))}
+.detail-note{
+  background:rgba(255,255,255,.045);border:1px solid var(--line);border-left:3px solid var(--sc,var(--gold));
+  border-radius:14px;padding:18px 20px;font-size:14.5px;line-height:1.9;color:#dfe3f5;font-weight:300;
+}
+.detail-tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.detail-tags span{font-size:12px;color:var(--muted);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:999px}
+.detail-fav{
+  display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:13px;color:var(--gold);
+  border:1px solid rgba(255,194,75,.5);background:rgba(255,194,75,.1);padding:7px 14px;border-radius:999px;
+}
+.detail-fav svg{width:15px;height:15px}
+
+/* 添加表单 */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;color:var(--muted);letter-spacing:.5px}
+.field input,.field select,.field textarea{
+  background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;
+  color:var(--ink);font-family:var(--body);font-size:14px;padding:12px 14px;outline:none;min-height:46px;
+  transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(255,194,75,.6)}
+.field textarea{min-height:96px;resize:vertical;line-height:1.7}
+.field select option{background:#141a3a;color:var(--ink)}
+.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+.hint-line{font-size:11.5px;color:var(--faint);margin-top:6px;line-height:1.6}
+
+/* ============================================================
+   响应式
+   ============================================================ */
+@media (max-width:768px){
+  .archive-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .topbar{padding:12px 16px}
+  .brand b{font-size:17px}
+  .hero{padding-top:100px}
+  .modal-box{padding:26px 20px 24px}
+  .btn{font-size:13px;padding:8px 13px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<div class="stars" aria-hidden="true"></div>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="topbar">
+  <div class="brand" data-goto="top">
+    <div class="logo"></div>
+    <div><b>啤酒宇宙指南</b><em>BEER UNIVERSE GUIDE</em></div>
+  </div>
+  <nav class="navbtns">
+    <button class="btn" id="btnLove" title="只看我最爱的星"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.85.8-5.06 4.66 1.35 6.78L12 17.2 5.96 20.5l1.35-6.78L2.25 9.06l6.85-.8z"/></svg>我的最爱</button>
+    <button class="btn primary" id="btnAdd"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>记录新酒</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-kicker">STAR GUIDE · 个人精酿巡游档案</div>
+    <h1>啤酒宇宙指南</h1>
+    <p class="hero-sub">把喝过的每一款精酿记录成一颗风味星球，按星系与星群归档。想找哪一杯，搜一下就能穿越回去。</p>
+    <div class="hero-stats" id="heroStats"><!-- 由 JS 渲染 --></div>
+    <div class="searchwrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="searchInput" type="text" placeholder="搜索酒名、厂牌、产地或风味…（如：热带水果、苦、朝日）" autocomplete="off">
+      <span class="kbd">⌘K</span>
+    </div>
+  </section>
+
+  <!-- ===== 控制栏 ===== -->
+  <section class="controls">
+    <div class="galaxy-tabs" id="galaxyTabs" role="tablist">
+      <!-- 由 JS 渲染 -->
+    </div>
+    <div class="style-filter" id="styleFilter">
+      <!-- 由 JS 渲染 -->
+    </div>
+    <div class="filter-row">
+      <label class="love-toggle">
+        <input type="checkbox" id="loveOnly">
+        <span class="track"></span>
+        <span>只看最爱</span>
+      </label>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+  </section>
+
+  <!-- ===== 卡片网格 ===== -->
+  <section class="beer-grid" id="beerGrid" aria-live="polite">
+    <!-- 由 JS 渲染 -->
+  </section>
+
+  <!-- ===== 宇宙档案 ===== -->
+  <section class="archive">
+    <div class="archive-head">
+      <div class="eyebrow">Galaxy Archive</div>
+      <h2>宇宙档案</h2>
+      <p>已经探索到的风味星球，按星系与星群归档统计</p>
+    </div>
+    <div class="archive-grid">
+      <div class="panel">
+        <h3>星系分布</h3>
+        <div class="sub">国产星云 × 进口银河</div>
+        <div class="donut-wrap">
+          <div id="donutChart" style="flex:none"></div>
+          <div class="legend" id="donutLegend"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>星群分布</h3>
+        <div class="sub">按啤酒风格归档的数量</div>
+        <div class="bars" id="styleBars"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="star-line">✦ ✦ ✦</div>
+  <div>啤酒宇宙指南 · 由你的 57 次品鉴构筑而成</div>
+  <div style="margin-top:6px;opacity:.75">持续探索，把喝过的好味道都收进星空</div>
+</footer>
+
+<!-- ===== 详情弹层 ===== -->
+<div class="modal" id="detailModal" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close="detail"></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close="detail" aria-label="关闭">✕</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<!-- ===== 添加弹层 ===== -->
+<div class="modal" id="addModal" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close="add"></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close="add" aria-label="关闭">✕</button>
+    <h2>记录一颗新星球</h2>
+    <p class="sub" style="color:var(--muted);font-size:13px;margin:8px 0 6px">喝完就记，存进本机浏览器，下次想找随时可搜。</p>
+    <div class="form-grid">
+      <div class="field">
+        <label for="fName">酒名 *</label>
+        <input id="fName" type="text" placeholder="如：击倒巨人暴龙之王">
+      </div>
+      <div class="field">
+        <label for="fBrand">厂牌 / 品牌</label>
+        <input id="fBrand" type="text" placeholder="如：击倒巨人">
+      </div>
+      <div class="field">
+        <label for="fRegion">星系（产地归属）*</label>
+        <select id="fRegion">
+          <option value="local">国产</option>
+          <option value="import">进口</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fCountry">产地</label>
+        <input id="fCountry" type="text" placeholder="如：美国 / 中国浙江">
+      </div>
+      <div class="field">
+        <label for="fStyle">风格</label>
+        <input id="fStyle" type="text" placeholder="如：浑浊IPA / 古斯">
+      </div>
+      <div class="field">
+        <label for="fGroup">星群</label>
+        <select id="fGroup"><!-- 由 JS 渲染 --></select>
+      </div>
+      <div class="field">
+        <label for="fTags">风味标签（逗号分隔）</label>
+        <input id="fTags" type="text" placeholder="如：热带水果, 微苦, 杀口感强">
+      </div>
+      <div class="field">
+        <label class="love-toggle" style="padding:8px 0">
+          <input type="checkbox" id="fFav">
+          <span class="track"></span>
+          <span>标记为最爱</span>
+        </label>
+      </div>
+      <div class="field full">
+        <label for="fNote">品鉴记录</label>
+        <textarea id="fNote" placeholder="写下这杯的味道、香气、口感…"></textarea>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn" data-close="add">取消</button>
+      <button class="btn primary" id="saveBeer">保存记录</button>
+    </div>
+    <div class="hint-line">记录会保存在当前浏览器（localStorage），换设备或清缓存会丢失。</div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   啤酒宇宙指南 · 数据层
+   ============================================================ */
+/* 风格星群元数据：color 驱动卡片星球与标签配色 */
+const STYLE_GROUPS = {
+  '拉格':   { color:'#5bd0e0', desc:'清爽的冷恒星带，麦芽与气泡的秩序星系' },
+  '小麦':   { color:'#ffc24b', desc:'云雾朦胧的小麦星云，柔和又易饮' },
+  'IPA':    { color:'#7ed67a', desc:'酒花爆发的热带星暴，水果与苦味的能量场' },
+  '世涛':   { color:'#c98a5b', desc:'深色厚重的暗物质带，咖啡、巧克力与焦香的引力核心' },
+  '比利时': { color:'#8e7cf5', desc:'古老修道院的星环，香料与果酸的深邃传说' },
+  '酸啤':   { color:'#f78fc8', desc:'果味发酵的酸味彗星，酸甜交织的流星雨' },
+  '特色':   { color:'#ffb45c', desc:'本土奇观行星，茶、黄酒、绿豆沙的脑洞宇宙' },
+};
+
+/* 内置品鉴数据：name / brand / region(local|import) / country / style / group / fav / tags / note
+   note 字段保留用户原始品鉴文字（仅修正明显 OCR 讹字） */
+const BUILTIN_BEERS = [
+  /* ---------- 进口 · 拉格 ---------- */
+  {name:'凯撒黑啤',brand:'凯撒',region:'import',country:'德国',style:'德式黑啤',group:'拉格',fav:false,tags:['焦香','淡麦芽','微苦','微酸'],note:'有焦香，淡麦芽香，微苦，微酸，酒底麦芽香更浓，口中留有微微焦香'},
+  {name:'一番榨（春季限定）',brand:'麒麟一番榨',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:false,tags:['苦味明显','柔和','留苦','淡麦芽'],note:'苦味明显，柔，口中留苦明显，淡麦芽味'},
+  {name:'朝日（辛口）',brand:'朝日',region:'import',country:'日本',style:'日式拉格（辛口干爽）',group:'拉格',fav:true,tags:['淡麦芽','苦味轻','气泡感强','返一丝苦'],note:'淡麦芽味，比春季略重，苦味轻，留口味道消散快，会返一丝丝苦味，气泡感强'},
+  {name:'喜力',brand:'喜力',region:'import',country:'荷兰',style:'欧式淡色拉格',group:'拉格',fav:false,tags:['淡爽','淡麦芽','微微酸'],note:'淡爽，淡麦芽味，微微酸'},
+  {name:'一番榨（秋味）',brand:'麒麟一番榨',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:false,tags:['入口酸','微苦','麦芽香','一丝酒味'],note:'入口酸，微苦，麦芽香和辛口类似，似乎带一丝丝酸味，留苦味道不明显，有一丝酒味'},
+  {name:'大星',brand:'艾蒂达姆',region:'import',country:'西班牙',style:'拉格',group:'拉格',fav:false,tags:['麦芽香','微酸','微微苦','酒体较重'],note:'麦芽香，微酸，微微苦，酒体较重，留口轻'},
+  {name:'一番榨（冬季限定）',brand:'麒麟一番榨',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:false,tags:['清新麦芽','微微酸','微苦','杀口感弱'],note:'较清新的麦芽香，入口微微酸，微苦，留口有一丝苦味时间不长，杀口感不那么强'},
+  {name:'三宝乐',brand:'三宝乐',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:true,tags:['香气稍重','杀口感强','一丝甜','嗓子微苦'],note:'香气较其他淡色拉格稍重，杀口感强，入口有一丝甜，留口不重但是嗓子眼微苦'},
+  {name:'鹅岛拉格',brand:'鹅岛',region:'import',country:'美国',style:'美式拉格',group:'拉格',fav:false,tags:['柑橘香','稍苦','颜色漂亮','留口苦'],note:'依旧柑橘香，香气比IPA淡一点点，入口稍稍苦，颜色漂亮，杀口感适中，留口稍苦'},
+  {name:'嘉士伯',brand:'嘉士伯',region:'import',country:'丹麦',style:'欧式淡色拉格',group:'拉格',fav:false,tags:['大米味','小麦味','颜色浅','留口轻'],note:'开罐大米味较明显，然后是小麦味，酒体颜色很浅，入口杀口感不强，有点酸，留口很轻'},
+  {name:'惠比寿（紫）',brand:'惠比寿',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:false,tags:['经典拉格香','中段香','微酸','后段苦'],note:'经典拉格香气，杀口感适中，中段香气明显，口感微酸，后段苦味显现'},
+  {name:'朝日（全开盖）',brand:'朝日',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:true,tags:['淡麦芽香','泡沫较密','留口轻'],note:'淡淡的麦芽香，泡沫较密，酒体颜色较淡，杀口感不强，留口轻'},
+  {name:'札幌（黑星）',brand:'札幌',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:true,tags:['麦芽香','杀口感强','微酸','留口不强'],note:'酒体颜色浅，泡沫还可以，麦芽香气比朝日稍浓（有甜感），杀口感较强，入口微酸，留口不强'},
+  {name:'麒麟（晴风）',brand:'麒麟',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:true,tags:['金黄透亮','香气淡','杀口感强','清新'],note:'酒体颜色金黄透亮很漂亮，香气很淡，入口杀口感强，比较清新，后段微微苦，留口轻'},
+  {name:'三得利（PSB）',brand:'三得利',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:false,tags:['麦芽香','泡沫绵密','微酸','后段苦'],note:'麦芽香还不错，酒体透亮泡沫足且绵密很漂亮，杀口感不算强，入口微酸后段苦，嗓子苦'},
+  {name:'惠比寿（黑）',brand:'惠比寿',region:'import',country:'日本',style:'日式黑拉格',group:'拉格',fav:true,tags:['焦香','麦芽香','中段甜','收尾苦'],note:'麦芽混着淡淡的焦香的味道，入口微酸，杀口感可以，中段甜，收尾苦但是可以接受'},
+  {name:'札幌（金星）',brand:'札幌',region:'import',country:'日本',style:'日式拉格',group:'拉格',fav:false,tags:['麦芽香','杀口感强','层次丰富','苦中带甜'],note:'麦芽香比较明显，酒体很亮，杀口感强，入口微微酸，中段苦味显现，后段有回甘，后续留口苦中带甜，层次挺丰富的'},
+  {name:'麒麟（零糖黄）',brand:'麒麟',region:'import',country:'日本',style:'日式拉格（零糖）',group:'拉格',fav:false,tags:['酒花香','柠檬香','清爽','杀口感强'],note:'开罐是酒花香气与淡淡的柠檬香，杀口感强，入口清爽微微酸，后段有一点点的苦味，总体偏清爽'},
+  {name:'麒麟（零糖蓝）',brand:'麒麟',region:'import',country:'日本',style:'日式拉格（零糖）',group:'拉格',fav:true,tags:['香气清新','微甜','清爽','杀口感适中'],note:'杀口感适中，入口微甜，后段点点苦，香气清新，很清爽'},
+  {name:'麒麟（零糖白）',brand:'麒麟',region:'import',country:'日本',style:'日式拉格（零糖）',group:'拉格',fav:false,tags:['香气薄','颜色深','微甜','苦中带酸'],note:'香气很薄，酒体颜色深，入口微甜，杀口感弱，后味苦中带微酸'},
+  {name:'三宝乐（零糖）',brand:'三宝乐',region:'import',country:'日本',style:'日式拉格（零糖）',group:'拉格',fav:false,tags:['芒果菠萝香','杀口感强','一点点酸','泡沫消散快'],note:'香气有点像芒果和菠萝蜜，杀口感强，入口不是很甜，一点点酸，后段苦味浮现，颜色偏深，泡沫消散快'},
+  {name:'喜力（星银）',brand:'喜力',region:'import',country:'荷兰',style:'欧式淡色拉格',group:'拉格',fav:true,tags:['杀口感强','层次一般','颜色不深'],note:'香气不浓，入口层次一般，但是杀口感很强，颜色不算深'},
+
+  /* ---------- 进口 · 小麦 ---------- */
+  {name:'范佳乐小麦啤',brand:'范佳乐',region:'import',country:'德国',style:'德式小麦白啤',group:'小麦',fav:false,tags:['味道极轻','微微苦','回甘','留口短轻'],note:'味道极轻，微微苦，回口甘，留口短轻'},
+  {name:'保拉纳小麦啤',brand:'保拉纳',region:'import',country:'德国',style:'德式小麦白啤',group:'小麦',fav:false,tags:['小麦味','话梅味','杀口感强','微苦'],note:'小麦味，有话梅味，杀口感强，微苦，留口极轻，气泡较密'},
+
+  /* ---------- 进口 · IPA ---------- */
+  {name:'击倒巨人暴龙之王',brand:'击倒巨人',region:'import',country:'美国',style:'浑浊IPA（双倍）',group:'IPA',fav:false,tags:['热带水果','入口甜','柚子皮苦','浑浊厚重'],note:'热带水果香气，初入口甜味，回味较苦（柚子皮苦），留苦明显，酒体浑浊厚重，像果汁，到嗓子甚至有点辣，酒精味略明显'},
+  {name:'击倒巨人暴龙苏',brand:'击倒巨人',region:'import',country:'美国',style:'浑浊IPA',group:'IPA',fav:false,tags:['热带水果','果汁感','一点点辣','嗓子苦'],note:'热带水果香气，味道似乎没有暴龙之王浓，酒体依旧果汁感，到嗓子眼依旧有点辣，有一丝丝酸味，嗓子眼也有苦感'},
+  {name:'鹅岛IPA',brand:'鹅岛',region:'import',country:'美国',style:'美式IPA',group:'IPA',fav:false,tags:['橘子香','花椒味','苦味明显','留口苦'],note:'橘子香，麦芽香气稍轻，似乎有一点花椒味，杀口感很轻，苦味明显但依然是水果的苦（没有暴龙之王苦），颜色透亮但是稍深，留口也苦但是可以接受'},
+  {name:'伯灵顿小巫师',brand:'伯灵顿',region:'import',country:'美国',style:'浑浊IPA',group:'IPA',fav:false,tags:['热带水果','柔而不黏','微酸','留口苦'],note:'热带水果香气，味道和暴龙苏类似，酒体没有击倒巨人浓厚，但反而让口感显得柔而不黏，有一丝酸味，有一点点辣嗓子，留口也有苦味但不重'},
+  {name:'车库计划（日出山谷）',brand:'车库计划',region:'import',country:'新西兰',style:'浑浊IPA（双倍）',group:'IPA',fav:false,tags:['菠萝香','热带水果','甜转苦','留口苦'],note:'香气可以，菠萝的味道直扑鼻腔，后调是热带水果混合的香气，酒体颜色浅但是也算较厚，入口有一点点酸味然后甜然后苦味冲上来的很快，留口苦但是不怎么辣'},
+
+  /* ---------- 进口 · 世涛 ---------- */
+  {name:'健力士世涛',brand:'健力士',region:'import',country:'爱尔兰',style:'爱尔兰干世涛',group:'世涛',fav:true,tags:['巧克力香','焦香','口感丝滑','微酸'],note:'巧克力香，麦芽香，焦香，苦味适中（像是黑巧的苦味），气泡绵密，好入口，杀口感不强，口感丝滑，有酸味'},
+  {name:'花生酱巧克力牛奶迷失海岸世涛',brand:'迷失海岸',region:'import',country:'美国',style:'甜品世涛',group:'世涛',fav:false,tags:['巧克力花生酱','入口甜','酒体较厚','留口微苦'],note:'酒体较厚，气泡绵密，巧克力花生酱牛奶味道浓厚，入口甜感，杀口感不强，留口微苦（黑巧）'},
+  {name:'打嗝海狸（摩卡金世涛）',brand:'打嗝海狸',region:'import',country:'美国',style:'咖啡世涛',group:'世涛',fav:true,tags:['咖啡香','燕麦香','入口甜','留口轻'],note:'咖啡和燕麦香气浓厚，酒体清澈，入口甜，杀口感适中，留口轻但是有巧克力的苦味和香味'},
+  {name:'帝磨栏（地狱与诅咒）（榛子）',brand:'帝磨栏',region:'import',country:'荷兰',style:'帝国世涛',group:'世涛',fav:true,tags:['巧克力咖啡','榛子香','黑巧苦','有回甘'],note:'非常浓郁的巧克力和咖啡香以及能闻到榛子的香气，杀口感不强，入口微酸然后是黑巧的苦但还是有一些回甘的，还是挺苦的但是混着巧克力的香一起就没有那么苦。留口也很苦，而且没有巧克力那种香气了'},
+
+  /* ---------- 进口 · 比利时 ---------- */
+  {name:'智美蓝帽',brand:'智美',region:'import',country:'比利时',style:'修道院四料',group:'比利时',fav:false,tags:['蒲地蓝','话梅铁锈','入口苦','灼烧感'],note:'味道重，蒲地蓝气味（话梅，铁锈），酒体深黑红色，入口苦，留口苦，咽下后嗓子有灼烧感'},
+  {name:'罗斯福6号',brand:'罗斯福',region:'import',country:'比利时',style:'修道院（双料）',group:'比利时',fav:true,tags:['蒲地蓝香','杀口感强','回口甜','嗓子辣'],note:'淡淡的蒲地蓝味反而有点香，杀口感强，苦味正常，但是依旧是药的苦感，但是回口有一丝甜味，嗓子眼有点辣'},
+  {name:'罗斯福8号',brand:'罗斯福',region:'import',country:'比利时',style:'修道院',group:'比利时',fav:false,tags:['香料味','麦芽香浓','回甘','嗓子辣'],note:'香气带有香料味道麦芽香浓，杀口感强，入口有点甜略苦但有回甘，嗓子稍稍辣'},
+  {name:'罗斯福10号',brand:'罗斯福',region:'import',country:'比利时',style:'修道院四料',group:'比利时',fav:false,tags:['酒精味重','味道重','入口甜','留口蒲地蓝'],note:'酒精味重，味道很重，杀口感比罗6弱，入口甜但苦味立马显现，留口依旧蒲地蓝，嗓子有点辣'},
+  {name:'督威666',brand:'督威',region:'import',country:'比利时',style:'烈性淡色艾尔',group:'比利时',fav:true,tags:['柑橘香','苦度适中','回口甜','颜色淡'],note:'气味清香有一点柑橘香，杀口感适中，苦度适中，回口有一点点甜，有一点点辣嗓子，颜色较淡'},
+
+  /* ---------- 国产 · 拉格 ---------- */
+  {name:'北平机器（机器皮尔森）',brand:'北平机器',region:'local',country:'中国',style:'皮尔森',group:'拉格',fav:false,tags:['IPA香','甜中带苦','留口微酸苦'],note:'开罐香气类似IPA，泡沫不密消散快，入口甜中带苦，留口有一点点酸和苦，整体像是轻度IPA'},
+  {name:'澳门啤酒',brand:'澳门啤酒',region:'local',country:'中国澳门',style:'拉格',group:'拉格',fav:false,tags:['柑橘麦芽香','甜而不酸','后味苦'],note:'柑橘麦芽香，杀口感正常，入口甜而不酸，后味苦'},
+  {name:'老雪花',brand:'雪花',region:'local',country:'中国',style:'工业拉格',group:'拉格',fav:false,tags:['标准麦芽香','微苦','有回甘'],note:'标准麦芽香，杀口感适中，入口微苦，尾调微苦，有回甘'},
+
+  /* ---------- 国产 · 小麦 ---------- */
+  {name:'胖东来精酿小麦啤',brand:'胖东来',region:'local',country:'中国河南',style:'小麦啤',group:'小麦',fav:false,tags:['麦芽香轻','气泡感弱','微微苦','奇怪味'],note:'麦芽香气不重，气泡感不强，微微苦，留口极轻，有一股奇怪的味道'},
+  {name:'青岛白啤',brand:'青岛',region:'local',country:'中国山东',style:'白啤',group:'小麦',fav:false,tags:['麦芽香','气泡感强','微微苦','留口轻'],note:'麦芽香比胖东来略重，气泡感更强，微微苦，留口极轻'},
+  {name:'胖东来比利时白啤',brand:'胖东来',region:'local',country:'中国河南',style:'比利时白啤',group:'小麦',fav:true,tags:['麦芽香','香辛料','杀口感强','层次丰富'],note:'闻起来麦芽香混着香辛料的味道，杀口感强，入口微酸层次丰富，留口香气重但不苦'},
+  {name:'北平机器（德式小麦）',brand:'北平机器',region:'local',country:'中国',style:'德式小麦',group:'小麦',fav:false,tags:['经典麦芽香','中段偏酸','后段奇怪'],note:'经典麦芽香，泡沫不重，杀口感适中，中段偏酸，后段有点奇怪'},
+
+  /* ---------- 国产 · IPA ---------- */
+  {name:'或不凡（黄河之水）',brand:'或不凡',region:'local',country:'中国浙江',style:'双倍IPA',group:'IPA',fav:false,tags:['香气还行','微甜','后段苦'],note:'香气还行，入口微微甜，杀口感正常，后段苦而且没有足够的香气支撑会显得更苦'},
+
+  /* ---------- 国产 · 世涛 ---------- */
+  {name:'北平机器（巧克力牛奶世涛）',brand:'北平机器',region:'local',country:'中国',style:'牛奶世涛',group:'世涛',fav:false,tags:['巧克力牛奶','入口酸甜','后段苦','泡沫少'],note:'巧克力牛奶香气，杀口感强，入口酸甜，后段苦，泡沫少'},
+
+  /* ---------- 国产 · 酸啤 ---------- */
+  {name:'制乐厂·青年养老院',brand:'制乐厂',region:'local',country:'中国',style:'果泥酸啤',group:'酸啤',fav:true,tags:['猕猴桃','芒果青苹果','酒体厚重','气泡感强'],note:'香气主体猕猴桃味道，伴有芒果青苹果香蕉味道，酒体厚重，入口甜然后紧接着的是酸然后再是淡淡的酒精的味道，气泡感较强，留口就像刚吃完猕猴桃的那一点点酸'},
+  {name:'制乐厂·愤怒的牛马',brand:'制乐厂',region:'local',country:'中国',style:'古斯',group:'酸啤',fav:false,tags:['莓果','铁锈味','酸味强烈','留口酸'],note:'莓果的味道，有股铁锈味，酸甜混合酸味强烈不愧是古斯，杀口感还可以，酒体不是很重，留口也很酸'},
+  {name:'制乐厂·开心的吗喽',brand:'制乐厂',region:'local',country:'中国',style:'果味酸啤',group:'酸啤',fav:false,tags:['桃子番石榴','先甜后酸','草莓香'],note:'桃子番石榴的味道，香气没有那么重，入口先甜，后味酸，杀口感不强，留口有草莓和淡淡的桃子香'},
+  {name:'制乐厂·黄色法拉利',brand:'制乐厂',region:'local',country:'中国',style:'果味酸啤',group:'酸啤',fav:false,tags:['杏子味','先甜后酸','桃核苦'],note:'杏子味道浓，入口先甜后酸，杀口感弱，留口轻，后调有一点点苦，像是桃核的那种苦'},
+  {name:'和弦·阳光砂糖桔',brand:'和弦',region:'local',country:'中国',style:'果泥酸啤',group:'酸啤',fav:false,tags:['砂糖桔','芬达味','中段甜','奇怪味'],note:'开盖是砂糖桔混着酒精的香气，后味有点像芬达，酒体没有那么重，颜色很漂亮，杀口感适中，中段甜味明显，留口较轻但是有股奇怪的味道（酒精感感觉压的不是很好）'},
+  {name:'山乘·月亮营业中',brand:'山乘',region:'local',country:'中国',style:'酸艾尔',group:'酸啤',fav:false,tags:['芒果杏子','非常酸','留口芒果香'],note:'芒果和杏子的味道，杀口感不强，非常非常酸，甜味不强，后味酸，很酸，但是留口有芒果的香气还有杏子的味道'},
+  {name:'大九酿造·芭乐之旅',brand:'大九酿造',region:'local',country:'中国内蒙古',style:'果泥酸啤',group:'酸啤',fav:false,tags:['芭乐','百香果','酒体浓','酒精感重'],note:'芭乐味道非常浓带有百香果的气息，酒体非常浓，入口酸甜一体，但是酒精感略重，后味有点苦'},
+
+  /* ---------- 国产 · 特色 ---------- */
+  {name:'古越龙山黄啤',brand:'古越龙山',region:'local',country:'中国浙江',style:'黄啤（黄酒增味）',group:'特色',fav:false,tags:['黄酒味','话梅味','入口甜','水感'],note:'闻着是淡淡的黄酒味和啤酒味，似乎有一点点话梅味，酒体颜色深，杀口感适中，入口甜，有一点水感，后味微微苦，有一点点酸'},
+  {name:'北平机器（绿豆沙）',brand:'北平机器',region:'local',country:'中国',style:'增味拉格',group:'特色',fav:false,tags:['绿豆沙','入口甜','中段酸','后段苦'],note:'闻起来一股厚重的绿豆沙味道，泡沫较密，入口甜，中段酸，后段微微苦'},
+  {name:'北平机器（明前龙井）',brand:'北平机器',region:'local',country:'中国',style:'增味拉格（茶味）',group:'特色',fav:false,tags:['茶香','泡沫细腻','微甜','微酸'],note:'淡淡的茶香味，泡沫细腻消散快，入口微微甜，中段微酸，不怎么苦，杀口感适中'},
+];
+
+/* ============================================================
+   状态层
+   ============================================================ */
+const LS_KEY = 'bug_user_beers_v1';
+const LS_PREFIX = 'user-';
+
+const state = {
+  region: 'all',       // all | local | import
+  group: 'all',        // 风格星群
+  keyword: '',
+  loveOnly: false,
+};
+
+/* 合并内置数据 + 用户 localStorage 数据 */
+function getAllBeers(){
+  let user = [];
+  try { user = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
+  catch(e){ user = []; }
+  return [...user.map(b => ({...b, isUser:true})), ...BUILTIN_BEERS];
+}
+
+function saveUserBeers(userList){
+  localStorage.setItem(LS_KEY, JSON.stringify(userList));
+}
+
+function getGroupColor(g){ return STYLE_GROUPS[g] ? STYLE_GROUPS[g].color : '#ffc24b'; }
+
+/* ============================================================
+   工具
+   ============================================================ */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function starSVG(){ return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.85.8-5.06 4.66 1.35 6.78L12 17.2 5.96 20.5l1.35-6.78L2.25 9.06l6.85-.8z"/></svg>'; }
+
+/* 由风格色生成星球上的随机气泡装饰 */
+function bubbles(color){
+  let out = '';
+  const pos = [[18,22,4],[58,14,3],[40,52,5],[70,48,3],[30,74,4],[62,78,3],[82,30,2]];
+  pos.forEach(([x,y,s]) => { out += `<span class="bubble" style="left:${x}%;top:${y}%;width:${s}px;height:${s}px"></span>`; });
+  return out;
+}
+
+/* ============================================================
+   渲染：Hero 统计
+   ============================================================ */
+function renderHeroStats(){
+  const beers = getAllBeers();
+  const total = beers.length;
+  const fav = beers.filter(b => b.fav).length;
+  const local = beers.filter(b => b.region === 'local').length;
+  const imp = beers.filter(b => b.region === 'import').length;
+  $('#heroStats').innerHTML = `
+    <div class="hstat"><span class="n">${total}</span><span>已探索星球</span></div>
+    <div class="hstat"><span class="n gold">${fav}</span><span>我的最爱</span></div>
+    <div class="hstat"><span class="n cyan">${local}</span><span>国产星云</span></div>
+    <div class="hstat"><span class="n violet">${imp}</span><span>进口银河</span></div>`;
+}
+
+/* ============================================================
+   渲染：控制栏
+   ============================================================ */
+function renderControls(){
+  const beers = getAllBeers();
+  const cnt = r => beers.filter(b => b.region === r).length;
+
+  $('#galaxyTabs').innerHTML = [
+    {k:'all', label:'全部星系'},
+    {k:'local', label:'国产星云'},
+    {k:'import', label:'进口银河'},
+  ].map(t => `
+    <button class="gtab ${state.region===t.k?'active':''}" data-region="${t.k}">
+      ${t.label}<span class="cnt">${t.k==='all' ? beers.length : cnt(t.k)}</span>
+    </button>`).join('');
+
+  const groups = Object.entries(STYLE_GROUPS);
+  $('#styleFilter').innerHTML = `
+    <button class="schip ${state.group==='all'?'active':''}" data-group="all" style="--sc:#ffc24b">
+      <span class="dot" style="background:#ffc24b"></span>全部星群<span class="n">${beers.length}</span>
+    </button>` +
+    groups.map(([g, meta]) => `
+      <button class="schip ${state.group===g?'active':''}" data-group="${g}" style="--sc:${meta.color}">
+        <span class="dot" style="background:${meta.color}"></span>${g}<span class="n">${beers.filter(b=>b.group===g).length}</span>
+      </button>`).join('');
+}
+
+/* ============================================================
+   渲染：卡片网格
+   ============================================================ */
+function filterBeers(){
+  const beers = getAllBeers();
+  const kw = state.keyword.trim().toLowerCase();
+  return beers.filter(b => {
+    if (state.region !== 'all' && b.region !== state.region) return false;
+    if (state.group !== 'all' && b.group !== state.group) return false;
+    if (state.loveOnly && !b.fav) return false;
+    if (kw){
+      const hay = [b.name, b.brand, b.country, b.style, b.group, b.note, ...(b.tags||[])].join(' ').toLowerCase();
+      if (!hay.includes(kw)) return false;
+    }
+    return true;
+  });
+}
+
+function renderGrid(){
+  const list = filterBeers();
+  $('#resultCount').innerHTML = `共 <b>${list.length}</b> 颗星球 · ${state.loveOnly ? '只看最爱' : '全星图'}`;
+
+  if (!list.length){
+    $('#beerGrid').innerHTML = `
+      <div class="empty">
+        <div class="planet-big"></div>
+        <h3>这片星域还没有记录</h3>
+        <p>换个关键词试试，或者把这杯新酒加入你的宇宙。</p>
+        <button class="btn" id="emptyClear">清除筛选</button>
+        <button class="btn primary" id="emptyAdd">记录新酒</button>
+      </div>`;
+    $('#emptyClear')?.addEventListener('click', () => { resetFilters(); });
+    $('#emptyAdd')?.addEventListener('click', () => openModal('add'));
+    return;
+  }
+
+  $('#beerGrid').innerHTML = list.map((b, i) => {
+    const c = getGroupColor(b.group);
+    const dispName = b.isUser ? b.name : b.name;
+    const tags = (b.tags||[]).slice(0, 4);
+    return `
+    <article class="card" data-id="${i}" role="button" tabindex="0" aria-label="查看 ${esc(dispName)}" style="--sc:${c};--hx:${20+(i*37)%70}%;--hy:${(i*53)%30}%">
+      <div class="fav-badge ${b.fav?'show':''}">${starSVG()}</div>
+      <div class="planet" aria-hidden="true">${bubbles(c)}</div>
+      <h3>${esc(dispName)}</h3>
+      <div class="meta"><span>${esc(b.brand)}</span><span class="sep">·</span><span>${esc(b.country)}</span></div>
+      <span class="style-chip"><span class="dot" style="width:7px;height:7px;border-radius:50%;background:${c};display:inline-block"></span>${esc(b.style)}</span>
+      <div class="tags">${tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+      <div class="hint">${b.region==='import' ? 'IMPORTED' : 'LOCAL'} · ${b.fav ? '★ 最爱' : '· 已记录'}</div>
+      ${b.isUser ? '<span class="userflag">MY RECORD</span>' : ''}
+    </article>`;
+  }).join('');
+}
+
+/* ============================================================
+   详情弹层
+   ============================================================ */
+function openDetail(index){
+  const beers = filterBeers();
+  const b = beers[index];
+  if (!b) return;
+  const c = getGroupColor(b.group);
+  const meta = STYLE_GROUPS[b.group] || {};
+  $('#detailContent').innerHTML = `
+    <div style="display:flex;align-items:center;gap:22px;margin-bottom:22px;flex-wrap:wrap">
+      <div class="planet" style="width:110px;height:110px;flex:none;--sc:${c}">${bubbles(c)}</div>
+      <div style="flex:1;min-width:220px">
+        <h2>${esc(b.name)}</h2>
+        <div class="sub-line">
+          <span>${esc(b.brand)}</span><span>·</span><span>${esc(b.country)}</span><span>·</span>
+          <span class="c">${esc(b.style)}</span><span>·</span><span>${esc(b.group)}星群</span>
+        </div>
+        ${b.fav ? '<div class="detail-fav">'+starSVG()+' 我的最爱 · 发光恒星</div>' : ''}
+      </div>
+    </div>
+    <h3 style="font-family:var(--display);font-weight:400;font-size:16px;margin-bottom:10px;color:var(--gold)">品鉴记录</h3>
+    <div class="detail-note">${esc(b.note)}</div>
+    <div class="detail-tags">${(b.tags||[]).map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+    ${b.isUser ? `<div style="margin-top:20px;display:flex;gap:10px">
+        <button class="btn" id="delBeer" style="border-color:rgba(240,120,120,.5);color:#ff9d9d">删除这条记录</button>
+      </div>` : ''}
+  `;
+  $('#delBeer')?.addEventListener('click', () => {
+    if (!confirm('确定要删除这条你自己添加的记录吗？')) return;
+    let user = [];
+    try { user = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch(e){}
+    const target = beers[index];
+    if (target && target.isUser){
+      user = user.filter(u => u.name !== target.name || (u._t !== target._t));
+      saveUserBeers(user);
+    }
+    closeModal('detail');
+    refreshAll();
+  });
+  openModal('detail');
+}
+
+/* ============================================================
+   添加弹层
+   ============================================================ */
+function openAddForm(){
+  $('#fGroup').innerHTML = Object.keys(STYLE_GROUPS)
+    .map(g => `<option value="${g}">${g}</option>`).join('');
+  ['fName','fBrand','fCountry','fStyle','fTags','fNote'].forEach(id => { $('#'+id).value=''; });
+  $('#fRegion').value = 'local';
+  $('#fFav').checked = false;
+  openModal('add');
+}
+
+function saveNewBeer(){
+  const name = $('#fName').value.trim();
+  if (!name){ alert('酒名是必填的，先写下这颗星球叫什么。'); return; }
+  const group = $('#fGroup').value || '拉格';
+  const tags = $('#fTags').value.split(/[,，]/).map(s=>s.trim()).filter(Boolean).slice(0,6);
+  const beer = {
+    _t: Date.now(),
+    name,
+    brand: $('#fBrand').value.trim(),
+    region: $('#fRegion').value,
+    country: $('#fCountry').value.trim(),
+    style: $('#fStyle').value.trim(),
+    group,
+    fav: $('#fFav').checked,
+    tags,
+    note: $('#fNote').value.trim(),
+    isUser: true,
+  };
+  let user = [];
+  try { user = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch(e){}
+  user.push(beer);
+  saveUserBeers(user);
+  closeModal('add');
+  refreshAll();
+}
+
+/* ============================================================
+   弹层开关
+   ============================================================ */
+function openModal(k){ $('#'+k+'Modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(k){ $('#'+k+'Modal').classList.remove('open'); document.body.style.overflow=''; }
+
+/* ============================================================
+   宇宙档案：统计可视化（手写 SVG，无外部图表库）
+   ============================================================ */
+function renderArchive(){
+  const beers = getAllBeers();
+  const local = beers.filter(b=>b.region==='local').length;
+  const imp = beers.filter(b=>b.region==='import').length;
+  const total = beers.length || 1;
+
+  /* 环形图 */
+  const R = 66, C = 2 * Math.PI * R;
+  const localFrac = local/total, impFrac = imp/total;
+  const offLocal = C * (1 - impFrac);
+  const offImp = 0;
+  $('#donutChart').innerHTML = `
+    <svg width="190" height="190" viewBox="0 0 190 190" role="img" aria-label="国产与进口占比">
+      <circle cx="95" cy="95" r="${R}" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="22"/>
+      <circle cx="95" cy="95" r="${R}" fill="none" stroke="#5bd0e0" stroke-width="22" stroke-linecap="round"
+        stroke-dasharray="${C}" stroke-dashoffset="${offLocal}" transform="rotate(-90 95 95)"/>
+      <circle cx="95" cy="95" r="${R}" fill="none" stroke="#8e7cf5" stroke-width="22" stroke-linecap="round"
+        stroke-dasharray="${C * impFrac}" stroke-dashoffset="${C}" transform="rotate(-90 95 95)"/>
+      <text x="95" y="90" text-anchor="middle" fill="#f4f1e8" font-family="Orbitron,monospace" font-size="26" font-weight="700">${total}</text>
+      <text x="95" y="112" text-anchor="middle" fill="#9aa3c7" font-size="11" font-family="'Noto Sans SC',sans-serif">颗星球</text>
+    </svg>`;
+  $('#donutLegend').innerHTML = `
+    <div class="li"><span class="sw" style="background:#5bd0e0"></span>国产星云<b>${local} · ${(localFrac*100).toFixed(0)}%</b></div>
+    <div class="li"><span class="sw" style="background:#8e7cf5"></span>进口银河<b>${imp} · ${(impFrac*100).toFixed(0)}%</b></div>`;
+
+  /* 风格分布条形 */
+  const entries = Object.entries(STYLE_GROUPS).map(([g, meta]) => ({
+    g, color: meta.color, n: beers.filter(b=>b.group===g).length
+  })).sort((a,b)=>b.n-a.n);
+  const maxN = Math.max(...entries.map(e=>e.n), 1);
+  $('#styleBars').innerHTML = entries.map(e => `
+    <div class="bar-row">
+      <span class="lbl"><span class="dot" style="background:${e.color}"></span>${e.g}</span>
+      <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,color-mix(in srgb,${e.color} 55%,transparent),${e.color});--w:${(e.n/maxN*100).toFixed(0)}%"></div></div>
+      <span class="v">${e.n}</span>
+    </div>`).join('');
+  /* 触发条形动画 */
+  requestAnimationFrame(() => {
+    $$('#styleBars .bar-fill').forEach(el => { el.style.width = el.style.getPropertyValue('--w'); });
+  });
+}
+
+/* ============================================================
+   总刷新
+   ============================================================ */
+function refreshAll(){
+  renderHeroStats();
+  renderControls();
+  renderGrid();
+  renderArchive();
+}
+
+function resetFilters(){
+  state.region='all'; state.group='all'; state.keyword=''; state.loveOnly=false;
+  $('#searchInput').value='';
+  $('#loveOnly').checked=false;
+  refreshAll();
+}
+
+/* ============================================================
+   事件绑定
+   ============================================================ */
+/* 搜索：实时过滤 */
+let searchTimer;
+$('#searchInput').addEventListener('input', e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => { state.keyword = e.target.value; renderGrid(); }, 120);
+});
+
+/* 键盘快捷键：Ctrl/⌘+K 聚焦搜索 */
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k'){
+    e.preventDefault(); $('#searchInput').focus();
+  }
+  if (e.key === 'Escape'){ closeModal('detail'); closeModal('add'); }
+});
+
+/* 星系切换（事件委托） */
+$('#galaxyTabs').addEventListener('click', e => {
+  const btn = e.target.closest('.gtab'); if (!btn) return;
+  state.region = btn.dataset.region; refreshAll();
+});
+/* 星群筛选 */
+$('#styleFilter').addEventListener('click', e => {
+  const btn = e.target.closest('.schip'); if (!btn) return;
+  state.group = btn.dataset.group; refreshAll();
+});
+/* 只看最爱 */
+$('#loveOnly').addEventListener('change', e => { state.loveOnly = e.target.checked; renderGrid(); });
+
+/* 卡片点击 / 键盘进入（事件委托） */
+$('#beerGrid').addEventListener('click', e => {
+  const card = e.target.closest('.card'); if (!card) return;
+  openDetail(+card.dataset.id);
+});
+$('#beerGrid').addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const card = e.target.closest('.card'); if (!card) return;
+  e.preventDefault(); openDetail(+card.dataset.id);
+});
+
+/* 顶部按钮 */
+$('#btnLove').addEventListener('click', () => {
+  state.loveOnly = !state.loveOnly;
+  $('#loveOnly').checked = state.loveOnly;
+  refreshAll();
+  $('#btnLove').classList.toggle('on', state.loveOnly);
+  document.querySelector('.beer-grid').scrollIntoView();
+});
+$('#btnAdd').addEventListener('click', openAddForm);
+$('#saveBeer').addEventListener('click', saveNewBeer);
+$('.brand').addEventListener('click', () => { resetFilters(); window.scrollTo({top:0, behavior:'smooth'}); });
+
+/* 弹层关闭（委托） */
+$$('.modal').forEach(m => {
+  m.addEventListener('click', e => {
+    const closeBtn = e.target.closest('[data-close]');
+    if (closeBtn) closeModal(closeBtn.dataset.close);
+    if (e.target === m.querySelector('.backdrop')) closeModal(m.dataset.close || (m.id==='detailModal'?'detail':'add'));
+  });
+});
+
+/* 键盘焦点可见性 */
+document.addEventListener('keydown', e => { if(e.key==='Tab') document.body.classList.add('kbd'); });
+document.addEventListener('mousedown', () => document.body.classList.remove('kbd'));
+
+/* ============================================================
+   启动
+   ============================================================ */
+refreshAll();
+</script>
+</body>
+</html>
