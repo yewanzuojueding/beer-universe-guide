@@ -226,6 +226,9 @@ a{color:inherit}
 .detail-body .sub-line .c{color:var(--sc,var(--gold))}
 .detail-price{display:inline-flex;align-items:baseline;gap:9px;font-family:var(--digit);font-size:24px;color:var(--gold);font-weight:700;margin:0 0 22px}
 .detail-price .ref{font-family:var(--body);font-size:11px;color:var(--faint);font-weight:300;letter-spacing:.5px}
+.detail-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.detail-meta span{font-size:12px;color:var(--muted);letter-spacing:.5px;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;padding:6px 13px}
+.detail-meta b{font-family:var(--digit);color:var(--gold);font-weight:700;margin-left:2px}
 .detail-fav{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:12.5px;color:var(--gold);border:1px solid rgba(200,164,92,.5);background:var(--gold-dim);padding:7px 14px;border-radius:999px}
 .detail-fav svg{width:14px;height:14px}
 .detail-del{display:inline-flex;margin-top:20px;padding:7px 14px;border-radius:999px;border:1px solid rgba(210,120,110,.45);color:#c98b80;background:rgba(210,120,110,.07);font-size:12.5px;cursor:pointer}
@@ -488,7 +491,13 @@ const BUILTIN_BEERS = [
       4,
       5,
       5
-    ]
+    ],
+    "params": {
+      "abv": 4.8,
+      "ibu": 18,
+      "plato": 11,
+      "volume": 500
+    }
   },
   {
     "name": "麒麟一番榨·春限定",
@@ -514,7 +523,13 @@ const BUILTIN_BEERS = [
       7,
       4,
       4
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 22,
+      "plato": 11,
+      "volume": 350
+    }
   },
   {
     "name": "朝日超爽·辛口",
@@ -540,7 +555,13 @@ const BUILTIN_BEERS = [
       3,
       3,
       9
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 18,
+      "plato": 10,
+      "volume": 500
+    }
   },
   {
     "name": "喜力经典",
@@ -565,7 +586,13 @@ const BUILTIN_BEERS = [
       3,
       3,
       8
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 18,
+      "plato": 11.4,
+      "volume": 500
+    }
   },
   {
     "name": "麒麟一番榨·秋味",
@@ -591,7 +618,13 @@ const BUILTIN_BEERS = [
       4,
       4,
       6
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 22,
+      "plato": 11,
+      "volume": 350
+    }
   },
   {
     "name": "艾帝达姆",
@@ -617,7 +650,13 @@ const BUILTIN_BEERS = [
       4,
       7,
       6
-    ]
+    ],
+    "params": {
+      "abv": 4.8,
+      "ibu": 16,
+      "plato": 11,
+      "volume": 750
+    }
   },
   {
     "name": "麒麟一番榨·冬限定",
@@ -643,7 +682,13 @@ const BUILTIN_BEERS = [
       4,
       4,
       6
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 20,
+      "plato": 11,
+      "volume": 350
+    }
   },
   {
     "name": "札幌",
@@ -669,7 +714,13 @@ const BUILTIN_BEERS = [
       4,
       4,
       5
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 20,
+      "plato": 10,
+      "volume": 500
+    }
   },
   {
     "name": "鹅岛拉格",
@@ -695,7 +746,13 @@ const BUILTIN_BEERS = [
       6,
       4,
       5
-    ]
+    ],
+    "params": {
+      "abv": 4.4,
+      "ibu": 15,
+      "plato": 11,
+      "volume": 355
+    }
   },
   {
     "name": "嘉士伯",
@@ -721,7 +778,13 @@ const BUILTIN_BEERS = [
       3,
       2,
       8
-    ]
+    ],
+    "params": {
+      "abv": 3.2,
+      "ibu": 12,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "惠比寿·特级艾尔",
@@ -747,7 +810,13 @@ const BUILTIN_BEERS = [
       5,
       5,
       5
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 18,
+      "plato": 10.5,
+      "volume": 350
+    }
   },
   {
     "name": "朝日超爽·全开盖",
@@ -772,7 +841,13 @@ const BUILTIN_BEERS = [
       3,
       3,
       8
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 18,
+      "plato": 10,
+      "volume": 500
+    }
   },
   {
     "name": "札幌·黑标",
@@ -798,7 +873,13 @@ const BUILTIN_BEERS = [
       4,
       5,
       6
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 18,
+      "plato": 10,
+      "volume": 500
+    }
   },
   {
     "name": "麒麟（晴风）",
@@ -824,7 +905,13 @@ const BUILTIN_BEERS = [
       4,
       3,
       7
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 20,
+      "plato": 10,
+      "volume": 350
+    }
   },
   {
     "name": "三得利PSB·零糖",
@@ -850,7 +937,13 @@ const BUILTIN_BEERS = [
       5,
       4,
       4
-    ]
+    ],
+    "params": {
+      "abv": 3.5,
+      "ibu": 15,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "惠比寿·黑",
@@ -876,7 +969,13 @@ const BUILTIN_BEERS = [
       5,
       6,
       5
-    ]
+    ],
+    "params": {
+      "abv": 5.5,
+      "ibu": 25,
+      "plato": 11,
+      "volume": 350
+    }
   },
   {
     "name": "札幌·金星",
@@ -902,7 +1001,13 @@ const BUILTIN_BEERS = [
       6,
       5,
       5
-    ]
+    ],
+    "params": {
+      "abv": 5.5,
+      "ibu": 24,
+      "plato": 11,
+      "volume": 500
+    }
   },
   {
     "name": "麒麟ZERO·零糖",
@@ -928,7 +1033,13 @@ const BUILTIN_BEERS = [
       4,
       3,
       7
-    ]
+    ],
+    "params": {
+      "abv": 3.5,
+      "ibu": 15,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "麒麟一番榨·零糖",
@@ -954,7 +1065,13 @@ const BUILTIN_BEERS = [
       4,
       3,
       7
-    ]
+    ],
+    "params": {
+      "abv": 3.5,
+      "ibu": 15,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "麒麟淡丽",
@@ -980,7 +1097,13 @@ const BUILTIN_BEERS = [
       5,
       4,
       5
-    ]
+    ],
+    "params": {
+      "abv": 3.5,
+      "ibu": 15,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "札幌（零糖）",
@@ -1006,7 +1129,13 @@ const BUILTIN_BEERS = [
       5,
       4,
       6
-    ]
+    ],
+    "params": {
+      "abv": 3.5,
+      "ibu": 15,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "喜力星银",
@@ -1031,7 +1160,13 @@ const BUILTIN_BEERS = [
       3,
       3,
       7
-    ]
+    ],
+    "params": {
+      "abv": 3,
+      "ibu": 10,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "范佳乐·小麦白啤",
@@ -1057,7 +1192,13 @@ const BUILTIN_BEERS = [
       3,
       4,
       7
-    ]
+    ],
+    "params": {
+      "abv": 5.3,
+      "ibu": 12,
+      "plato": 11.8,
+      "volume": 500
+    }
   },
   {
     "name": "保拉纳·小麦白啤",
@@ -1083,7 +1224,13 @@ const BUILTIN_BEERS = [
       4,
       5,
       7
-    ]
+    ],
+    "params": {
+      "abv": 5.5,
+      "ibu": 12,
+      "plato": 12,
+      "volume": 500
+    }
   },
   {
     "name": "击倒巨人·暴龙之王",
@@ -1100,7 +1247,7 @@ const BUILTIN_BEERS = [
       "浑浊厚重"
     ],
     "note": "热带水果香气，初入口甜味，回味较苦（柚子皮苦），留苦明显，酒体浑浊厚重，像果汁，到嗓子甚至有点辣，酒精味略明显",
-    "img": "https://aka.doubaocdn.com/s/0R6COVPbn4",
+    "img": "https://aka.doubaocdn.com/s/1kUEY351fn",
     "price": "¥22/罐",
     "origin": "美国·爱荷华",
     "score": [
@@ -1109,7 +1256,13 @@ const BUILTIN_BEERS = [
       8,
       8,
       2
-    ]
+    ],
+    "params": {
+      "abv": 8.2,
+      "ibu": 70,
+      "plato": 18,
+      "volume": 473
+    }
   },
   {
     "name": "击倒巨人·暴龙苏",
@@ -1135,7 +1288,13 @@ const BUILTIN_BEERS = [
       7,
       7,
       3
-    ]
+    ],
+    "params": {
+      "abv": 6.5,
+      "ibu": 55,
+      "plato": 16,
+      "volume": 473
+    }
   },
   {
     "name": "鹅岛IPA",
@@ -1152,7 +1311,7 @@ const BUILTIN_BEERS = [
       "留口苦"
     ],
     "note": "橘子香，麦芽香气稍轻，似乎有一点花椒味，杀口感很轻，苦味明显但依然是水果的苦（没有暴龙之王苦），颜色透亮但是稍深，留口也苦但是可以接受",
-    "img": "https://aka.doubaocdn.com/s/V08lYKLjLY",
+    "img": "https://aka.doubaocdn.com/s/OdfIkiRMR7",
     "price": "¥10/罐",
     "origin": "美国·芝加哥",
     "score": [
@@ -1161,7 +1320,13 @@ const BUILTIN_BEERS = [
       7,
       4,
       3
-    ]
+    ],
+    "params": {
+      "abv": 5.9,
+      "ibu": 55,
+      "plato": 15.5,
+      "volume": 500
+    }
   },
   {
     "name": "伯灵顿·小巫师",
@@ -1187,7 +1352,13 @@ const BUILTIN_BEERS = [
       6,
       5,
       4
-    ]
+    ],
+    "params": {
+      "abv": 6.5,
+      "ibu": 50,
+      "plato": 16,
+      "volume": 473
+    }
   },
   {
     "name": "车库计划·日出山谷",
@@ -1213,7 +1384,13 @@ const BUILTIN_BEERS = [
       7,
       7,
       3
-    ]
+    ],
+    "params": {
+      "abv": 7.5,
+      "ibu": 55,
+      "plato": 17,
+      "volume": 473
+    }
   },
   {
     "name": "健力士·世涛",
@@ -1239,7 +1416,13 @@ const BUILTIN_BEERS = [
       5,
       6,
       6
-    ]
+    ],
+    "params": {
+      "abv": 4.2,
+      "ibu": 35,
+      "plato": 10,
+      "volume": 440
+    }
   },
   {
     "name": "迷失海岸·花生酱巧克力牛奶世涛",
@@ -1256,7 +1439,7 @@ const BUILTIN_BEERS = [
       "留口微苦"
     ],
     "note": "酒体较厚，气泡绵密，巧克力花生酱牛奶味道浓厚，入口甜感，杀口感不强，留口微苦（黑巧）",
-    "img": "https://aka.doubaocdn.com/s/CUsNYwlPIt",
+    "img": "https://aka.doubaocdn.com/s/tf5TqxPsiP",
     "price": "¥22/瓶",
     "origin": "美国·加利福尼亚",
     "score": [
@@ -1265,7 +1448,13 @@ const BUILTIN_BEERS = [
       4,
       8,
       4
-    ]
+    ],
+    "params": {
+      "abv": 5.6,
+      "ibu": 20,
+      "plato": 13.8,
+      "volume": 355
+    }
   },
   {
     "name": "打嗝海狸·摩卡金世涛",
@@ -1282,7 +1471,7 @@ const BUILTIN_BEERS = [
       "留口轻"
     ],
     "note": "咖啡和燕麦香气浓厚，酒体清澈，入口甜，杀口感适中，留口轻但是有巧克力的苦味和香味",
-    "img": "https://aka.doubaocdn.com/s/CUsXPiQcdB",
+    "img": "https://aka.doubaocdn.com/s/3LMAURxhUa",
     "price": "¥25/瓶",
     "origin": "美国·加利福尼亚",
     "score": [
@@ -1291,7 +1480,13 @@ const BUILTIN_BEERS = [
       4,
       6,
       5
-    ]
+    ],
+    "params": {
+      "abv": 6,
+      "ibu": 30,
+      "plato": 14,
+      "volume": 355
+    }
   },
   {
     "name": "帝磨栏·地狱与诅咒（榛子）",
@@ -1308,7 +1503,7 @@ const BUILTIN_BEERS = [
       "有回甘"
     ],
     "note": "非常浓郁的巧克力和咖啡香以及能闻到榛子的香气，杀口感不强，入口微酸然后是黑巧的苦但还是有一些回甘的，还是挺苦的但是混着巧克力的香一起就没有那么苦。留口也很苦，而且没有巧克力那种香气了",
-    "img": "https://aka.doubaocdn.com/s/30ndtiEKB9",
+    "img": "https://aka.doubaocdn.com/s/Ta3mXE0Lnd",
     "price": "¥35/瓶",
     "origin": "荷兰·布雷达",
     "score": [
@@ -1317,7 +1512,13 @@ const BUILTIN_BEERS = [
       7,
       8,
       4
-    ]
+    ],
+    "params": {
+      "abv": 10,
+      "ibu": 60,
+      "plato": 23,
+      "volume": 330
+    }
   },
   {
     "name": "智美·蓝帽",
@@ -1343,7 +1544,13 @@ const BUILTIN_BEERS = [
       8,
       8,
       2
-    ]
+    ],
+    "params": {
+      "abv": 9,
+      "ibu": 30,
+      "plato": 20,
+      "volume": 330
+    }
   },
   {
     "name": "罗斯福6号",
@@ -1369,7 +1576,13 @@ const BUILTIN_BEERS = [
       5,
       6,
       5
-    ]
+    ],
+    "params": {
+      "abv": 7.5,
+      "ibu": 20,
+      "plato": 16,
+      "volume": 330
+    }
   },
   {
     "name": "罗斯福8号",
@@ -1386,7 +1599,7 @@ const BUILTIN_BEERS = [
       "嗓子辣"
     ],
     "note": "香气带有香料味道麦芽香浓，杀口感强，入口有点甜略苦但有回甘，嗓子稍稍辣",
-    "img": "https://aka.doubaocdn.com/s/9fUI4pVl4A",
+    "img": "https://aka.doubaocdn.com/s/MvQW3DuFnG",
     "price": "¥18/瓶",
     "origin": "比利时·那慕尔",
     "score": [
@@ -1395,7 +1608,13 @@ const BUILTIN_BEERS = [
       5,
       6,
       5
-    ]
+    ],
+    "params": {
+      "abv": 9.2,
+      "ibu": 22,
+      "plato": 20,
+      "volume": 330
+    }
   },
   {
     "name": "罗斯福10号",
@@ -1421,7 +1640,13 @@ const BUILTIN_BEERS = [
       8,
       9,
       3
-    ]
+    ],
+    "params": {
+      "abv": 11.3,
+      "ibu": 27,
+      "plato": 22,
+      "volume": 330
+    }
   },
   {
     "name": "督威·666",
@@ -1447,7 +1672,13 @@ const BUILTIN_BEERS = [
       5,
       4,
       5
-    ]
+    ],
+    "params": {
+      "abv": 8.5,
+      "ibu": 35,
+      "plato": 18,
+      "volume": 330
+    }
   },
   {
     "name": "北平机器·机器皮尔森",
@@ -1472,7 +1703,13 @@ const BUILTIN_BEERS = [
       5,
       4,
       5
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 25,
+      "plato": 11,
+      "volume": 330
+    }
   },
   {
     "name": "澳门啤酒",
@@ -1497,7 +1734,13 @@ const BUILTIN_BEERS = [
       4,
       4,
       6
-    ]
+    ],
+    "params": {
+      "abv": 4,
+      "ibu": 12,
+      "plato": 10,
+      "volume": 330
+    }
   },
   {
     "name": "雪花·老雪",
@@ -1513,7 +1756,7 @@ const BUILTIN_BEERS = [
       "有回甘"
     ],
     "note": "标准麦芽香，杀口感适中，入口微苦，尾调微苦，有回甘",
-    "img": "https://aka.doubaocdn.com/s/XT4kvveMyv",
+    "img": "https://aka.doubaocdn.com/s/aVfYO5lWKU",
     "price": "¥6/瓶",
     "origin": "中国·沈阳",
     "score": [
@@ -1522,7 +1765,13 @@ const BUILTIN_BEERS = [
       4,
       5,
       6
-    ]
+    ],
+    "params": {
+      "abv": 4.7,
+      "ibu": 15,
+      "plato": 12,
+      "volume": 640
+    }
   },
   {
     "name": "胖东来·精酿小麦啤",
@@ -1548,7 +1797,13 @@ const BUILTIN_BEERS = [
       3,
       4,
       6
-    ]
+    ],
+    "params": {
+      "abv": 4.5,
+      "ibu": 10,
+      "plato": 11,
+      "volume": 500
+    }
   },
   {
     "name": "青岛·白啤",
@@ -1574,7 +1829,13 @@ const BUILTIN_BEERS = [
       3,
       4,
       7
-    ]
+    ],
+    "params": {
+      "abv": 4.5,
+      "ibu": 10,
+      "plato": 10.5,
+      "volume": 500
+    }
   },
   {
     "name": "胖东来·比利时白啤",
@@ -1600,7 +1861,13 @@ const BUILTIN_BEERS = [
       3,
       5,
       7
-    ]
+    ],
+    "params": {
+      "abv": 4.7,
+      "ibu": 10,
+      "plato": 13.5,
+      "volume": 500
+    }
   },
   {
     "name": "北平机器·德式小麦",
@@ -1625,7 +1892,13 @@ const BUILTIN_BEERS = [
       3,
       5,
       5
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 12,
+      "plato": 11.5,
+      "volume": 330
+    }
   },
   {
     "name": "或不凡·黄河之水",
@@ -1650,7 +1923,13 @@ const BUILTIN_BEERS = [
       7,
       7,
       3
-    ]
+    ],
+    "params": {
+      "abv": 8.2,
+      "ibu": 60,
+      "plato": 18,
+      "volume": 500
+    }
   },
   {
     "name": "北平机器·巧克力牛奶世涛",
@@ -1676,7 +1955,13 @@ const BUILTIN_BEERS = [
       6,
       6,
       4
-    ]
+    ],
+    "params": {
+      "abv": 5.5,
+      "ibu": 25,
+      "plato": 13,
+      "volume": 330
+    }
   },
   {
     "name": "制乐厂·青年养老院",
@@ -1702,7 +1987,13 @@ const BUILTIN_BEERS = [
       2,
       7,
       4
-    ]
+    ],
+    "params": {
+      "abv": 4.5,
+      "ibu": 8,
+      "plato": 11,
+      "volume": 500
+    }
   },
   {
     "name": "制乐厂·愤怒的牛马",
@@ -1728,7 +2019,13 @@ const BUILTIN_BEERS = [
       2,
       5,
       3
-    ]
+    ],
+    "params": {
+      "abv": 4,
+      "ibu": 6,
+      "plato": 10,
+      "volume": 500
+    }
   },
   {
     "name": "制乐厂·开心的吗喽",
@@ -1753,7 +2050,13 @@ const BUILTIN_BEERS = [
       2,
       5,
       5
-    ]
+    ],
+    "params": {
+      "abv": 4,
+      "ibu": 6,
+      "plato": 10,
+      "volume": 500
+    }
   },
   {
     "name": "制乐厂·黄色法拉利",
@@ -1778,7 +2081,13 @@ const BUILTIN_BEERS = [
       3,
       4,
       6
-    ]
+    ],
+    "params": {
+      "abv": 4,
+      "ibu": 6,
+      "plato": 10,
+      "volume": 500
+    }
   },
   {
     "name": "和弦·阳光砂糖桔",
@@ -1804,7 +2113,13 @@ const BUILTIN_BEERS = [
       3,
       4,
       5
-    ]
+    ],
+    "params": {
+      "abv": 4.5,
+      "ibu": 8,
+      "plato": 11,
+      "volume": 330
+    }
   },
   {
     "name": "山乘·月亮营业中",
@@ -1829,7 +2144,13 @@ const BUILTIN_BEERS = [
       3,
       4,
       3
-    ]
+    ],
+    "params": {
+      "abv": 4,
+      "ibu": 6,
+      "plato": 10,
+      "volume": 330
+    }
   },
   {
     "name": "大九酿造·芭乐之旅",
@@ -1855,7 +2176,13 @@ const BUILTIN_BEERS = [
       4,
       8,
       4
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 8,
+      "plato": 12,
+      "volume": 330
+    }
   },
   {
     "name": "古越龙山·黄啤",
@@ -1881,7 +2208,13 @@ const BUILTIN_BEERS = [
       3,
       5,
       5
-    ]
+    ],
+    "params": {
+      "abv": 4.1,
+      "ibu": 10,
+      "plato": 10,
+      "volume": 330
+    }
   },
   {
     "name": "北平机器·绿豆沙",
@@ -1907,7 +2240,13 @@ const BUILTIN_BEERS = [
       3,
       5,
       5
-    ]
+    ],
+    "params": {
+      "abv": 4,
+      "ibu": 12,
+      "plato": 10,
+      "volume": 330
+    }
   },
   {
     "name": "北平机器·明前龙井",
@@ -1933,7 +2272,13 @@ const BUILTIN_BEERS = [
       3,
       4,
       6
-    ]
+    ],
+    "params": {
+      "abv": 4,
+      "ibu": 15,
+      "plato": 10,
+      "volume": 330
+    }
   },
   {
     "name": "青岛经典1903",
@@ -1958,7 +2303,13 @@ const BUILTIN_BEERS = [
       3,
       3,
       7
-    ]
+    ],
+    "params": {
+      "abv": 4,
+      "ibu": 12,
+      "plato": 10,
+      "volume": 500
+    }
   },
   {
     "name": "青岛纯生",
@@ -1983,7 +2334,13 @@ const BUILTIN_BEERS = [
       3,
       3,
       8
-    ]
+    ],
+    "params": {
+      "abv": 3.1,
+      "ibu": 10,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "青岛奥古特",
@@ -2008,7 +2365,13 @@ const BUILTIN_BEERS = [
       4,
       5,
       6
-    ]
+    ],
+    "params": {
+      "abv": 4.7,
+      "ibu": 15,
+      "plato": 12,
+      "volume": 500
+    }
   },
   {
     "name": "哈尔滨冰纯",
@@ -2033,7 +2396,13 @@ const BUILTIN_BEERS = [
       3,
       2,
       7
-    ]
+    ],
+    "params": {
+      "abv": 3.6,
+      "ibu": 10,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "哈尔滨小麦王",
@@ -2058,7 +2427,13 @@ const BUILTIN_BEERS = [
       2,
       4,
       6
-    ]
+    ],
+    "params": {
+      "abv": 3.6,
+      "ibu": 10,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "乌苏·红乌苏",
@@ -2083,7 +2458,13 @@ const BUILTIN_BEERS = [
       4,
       5,
       5
-    ]
+    ],
+    "params": {
+      "abv": 4.3,
+      "ibu": 14,
+      "plato": 10,
+      "volume": 620
+    }
   },
   {
     "name": "百威经典",
@@ -2108,7 +2489,13 @@ const BUILTIN_BEERS = [
       3,
       3,
       8
-    ]
+    ],
+    "params": {
+      "abv": 3.6,
+      "ibu": 12,
+      "plato": 8.8,
+      "volume": 500
+    }
   },
   {
     "name": "雪花勇闯天涯",
@@ -2133,7 +2520,13 @@ const BUILTIN_BEERS = [
       2,
       2,
       7
-    ]
+    ],
+    "params": {
+      "abv": 3,
+      "ibu": 8,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "雪花纯生",
@@ -2158,7 +2551,13 @@ const BUILTIN_BEERS = [
       2,
       3,
       8
-    ]
+    ],
+    "params": {
+      "abv": 3.2,
+      "ibu": 8,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "燕京U8",
@@ -2183,7 +2582,13 @@ const BUILTIN_BEERS = [
       3,
       2,
       6
-    ]
+    ],
+    "params": {
+      "abv": 2.5,
+      "ibu": 8,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "珠江纯生",
@@ -2208,7 +2613,13 @@ const BUILTIN_BEERS = [
       3,
       3,
       8
-    ]
+    ],
+    "params": {
+      "abv": 3.2,
+      "ibu": 10,
+      "plato": 9,
+      "volume": 500
+    }
   },
   {
     "name": "崂山·精品",
@@ -2233,7 +2644,13 @@ const BUILTIN_BEERS = [
       3,
       2,
       7
-    ]
+    ],
+    "params": {
+      "abv": 3.1,
+      "ibu": 8,
+      "plato": 8,
+      "volume": 500
+    }
   },
   {
     "name": "重庆·乐堡",
@@ -2258,7 +2675,13 @@ const BUILTIN_BEERS = [
       3,
       3,
       8
-    ]
+    ],
+    "params": {
+      "abv": 3.2,
+      "ibu": 10,
+      "plato": 9,
+      "volume": 500
+    }
   },
   {
     "name": "科罗娜·特级",
@@ -2276,14 +2699,20 @@ const BUILTIN_BEERS = [
     ],
     "note": "经典配青柠的墨西哥拉格，清淡顺滑，冰镇配青柠最佳",
     "price": "¥8/瓶",
-    "img": "https://aka.doubaocdn.com/s/mX47EyZkWV",
+    "img": "https://aka.doubaocdn.com/s/OV274c9688",
     "score": [
       3,
       6,
       3,
       3,
       7
-    ]
+    ],
+    "params": {
+      "abv": 4.5,
+      "ibu": 15,
+      "plato": 11,
+      "volume": 330
+    }
   },
   {
     "name": "福佳白",
@@ -2308,7 +2737,13 @@ const BUILTIN_BEERS = [
       2,
       4,
       7
-    ]
+    ],
+    "params": {
+      "abv": 4.9,
+      "ibu": 10,
+      "plato": 11.5,
+      "volume": 330
+    }
   },
   {
     "name": "1664·白啤",
@@ -2326,14 +2761,20 @@ const BUILTIN_BEERS = [
     ],
     "note": "蓝色瓶身标志性，柑橘花香明显偏甜，女生接受度高",
     "price": "¥8/瓶",
-    "img": "https://aka.doubaocdn.com/s/czraL2SfP3",
+    "img": "https://aka.doubaocdn.com/s/tPctaQvoXG",
     "score": [
       6,
       6,
       2,
       4,
       7
-    ]
+    ],
+    "params": {
+      "abv": 5,
+      "ibu": 12,
+      "plato": 11.8,
+      "volume": 330
+    }
   }
 ]
 
@@ -2464,7 +2905,7 @@ function renderGrid(){
           <span class="origin-chip"><span class="odot" style="background:${c}"></span>${esc(b.origin||b.country)}</span>
         </div>
         ${b.price?`<div class="price">${esc(b.price)}<span class="ref">国内参考</span></div>`:''}
-        <div class="hint"><span>${b.region==='import'?'IMPORTED':'LOCAL'} · ${b.group}</span><span class="favtxt">${b.fav?'★ FAVORITE':''}</span>${taste&&taste.myScore?`<span class="mytxt">MY ${taste.myScore}</span>`:''}</div>
+        <div class="hint"><span>${b.region==='import'?'IMPORTED':'LOCAL'} · ${b.group}</span><span class="favtxt">${b.fav?'★ FAVORITE':''}</span>${taste&&taste.myScore?`<span class="mytxt">MY ${taste.myScore>5?Math.round(taste.myScore/2):taste.myScore}</span>`:''}</div>
         ${b.score?`<button class="radar-btn" tabindex="-1">◉ 五维评分</button>`:''}
         ${b.isUser ? '<span class="userflag">MY RECORD</span>' : ''}
       </div>
@@ -2484,7 +2925,7 @@ function openDetail(index){
   const d=new Date();
   const today = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   let pstatus = taste?taste.status:'';
-  let pscore = taste&&taste.myScore?taste.myScore:null;
+  let pscore = taste&&taste.myScore?(taste.myScore>5?Math.round(taste.myScore/2):taste.myScore):null;
   const img = b.img || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675"><rect width="1200" height="675" fill="%230b0c11"/></svg>';
   $('#detailContent').innerHTML = `
     <div class="detail-hero"><img src="${img}" alt="${esc(b.name)}"></div>
@@ -2495,6 +2936,12 @@ function openDetail(index){
         <span class="c">${esc(b.style)}</span><span>·</span><span>${esc(b.group)}星群</span>
       </div>
       ${b.price?`<div class="detail-price">${esc(b.price)}<span class="ref">国内参考价</span></div>`:''}
+      ${b.params?`<div class="detail-meta">
+        <span>酒精度 <b>${b.params.abv}%</b></span>
+        <span>苦度 <b>${b.params.ibu} IBU</b></span>
+        <span>麦汁 <b>${b.params.plato}°P</b></span>
+        <span>容量 <b>${b.params.volume}ml</b></span>
+      </div>`:''}
       ${b.score?`
       <div class="radar-sec">
         <div class="radar-head"><span class="radar-title">五维风味雷达</span><span class="radar-avg">综合 ${b.score[0]},${b.score[1]},${b.score[2]},${b.score[3]},${b.score[4]}</span></div>
@@ -2520,7 +2967,7 @@ function openDetail(index){
         </div>
         <div class="taste-score">
           <span class="ts-lbl">我的评分</span>
-          <div class="ts-stars">${Array.from({length:10},(_,i)=>i+1).map(n=>`<span class="ts-star ${pscore>=n?'on':''}" data-n="${n}">★</span>`).join('')}</div>
+          <div class="ts-stars">${Array.from({length:5},(_,i)=>i+1).map(n=>`<span class="ts-star ${pscore>=n?'on':''}" data-n="${n}">★</span>`).join('')}</div>
           <span class="ts-val" id="tasteVal">${pscore||'—'}</span>
         </div>
         <div class="taste-note">
