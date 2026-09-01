@@ -157,9 +157,11 @@ a{color:inherit}
 .card h3{font-family:var(--serif);font-size:18.5px;font-weight:600;letter-spacing:1px;line-height:1.35;color:var(--ink)}
 .card .meta{font-size:11.5px;color:var(--faint);letter-spacing:.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .card .meta .sep{opacity:.5}
-.card .style-chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--sc,var(--gold));border:1px solid color-mix(in srgb,var(--sc,var(--gold)) 38%,transparent);background:color-mix(in srgb,var(--sc,var(--gold)) 8%,transparent);padding:3px 10px;border-radius:999px;width:fit-content}
+.card .style-chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--sc,var(--gold));border:1px solid color-mix(in srgb,var(--sc,var(--gold)) 38%,transparent);background:color-mix(in srgb,var(--sc,var(--gold)) 8%,transparent);padding:5px 13px;border-radius:999px;width:fit-content}
 .card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
 .card .tags span{font-size:10.5px;color:var(--muted);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:3px 9px;border-radius:999px}
+.card .price{display:flex;align-items:baseline;gap:7px;font-family:var(--digit);font-size:17px;color:var(--gold);font-weight:700;margin-top:auto;padding-top:2px}
+.card .price .ref{font-family:var(--body);font-size:10px;color:var(--faint);font-weight:300;letter-spacing:.5px}
 .card .hint{display:flex;justify-content:space-between;align-items:center;font-family:var(--digit);font-size:9px;color:var(--faint);letter-spacing:1.5px;margin-top:4px}
 .card .hint .favtxt{color:var(--gold)}
 .userflag{font-size:9px;font-family:var(--digit);color:#9db8c4;border:1px solid rgba(157,184,196,.35);padding:2px 7px;border-radius:6px;letter-spacing:1.5px}
@@ -222,6 +224,8 @@ a{color:inherit}
 .detail-note{background:rgba(255,255,255,.035);border:1px solid var(--line);border-left:2px solid var(--sc,var(--gold));border-radius:10px;padding:18px 20px;font-size:14px;line-height:2;color:#d6d8e0;font-weight:300}
 .detail-tags{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0}
 .detail-tags span{font-size:11.5px;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:5px 12px;border-radius:999px}
+.detail-price{display:inline-flex;align-items:baseline;gap:9px;font-family:var(--digit);font-size:24px;color:var(--gold);font-weight:700;margin:0 0 22px}
+.detail-price .ref{font-family:var(--body);font-size:11px;color:var(--faint);font-weight:300;letter-spacing:.5px}
 .detail-fav{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:12.5px;color:var(--gold);border:1px solid rgba(200,164,92,.5);background:var(--gold-dim);padding:7px 14px;border-radius:999px}
 .detail-fav svg{width:14px;height:14px}
 .detail-del{display:inline-flex;margin-top:20px;padding:7px 14px;border-radius:999px;border:1px solid rgba(210,120,110,.45);color:#c98b80;background:rgba(210,120,110,.07);font-size:12.5px;cursor:pointer}
@@ -405,7 +409,9 @@ const BUILTIN_BEERS = [
       "微酸"
     ],
     "note": "有焦香，淡麦芽香，微苦，微酸，酒底麦芽香更浓，口中留有微微焦香",
-    "img": "https://aka.doubaocdn.com/s/Na1vao6Ycz"
+    "img": "https://aka.doubaocdn.com/s/Na1vao6Ycz",
+    "price": "¥15/罐",
+    "origin": "德国"
   },
   {
     "name": "麒麟一番榨·春限定",
@@ -422,7 +428,9 @@ const BUILTIN_BEERS = [
       "淡麦芽"
     ],
     "note": "苦味明显，柔，口中留苦明显，淡麦芽味",
-    "img": "https://aka.doubaocdn.com/s/yrW8KazoaZ"
+    "img": "https://aka.doubaocdn.com/s/yrW8KazoaZ",
+    "price": "¥12/罐",
+    "origin": "日本"
   },
   {
     "name": "朝日超爽·辛口",
@@ -439,7 +447,9 @@ const BUILTIN_BEERS = [
       "返一丝苦"
     ],
     "note": "淡麦芽味，比春季略重，苦味轻，留口味道消散快，会返一丝丝苦味，气泡感强",
-    "img": "https://aka.doubaocdn.com/s/5aAmTyPfxE"
+    "img": "https://aka.doubaocdn.com/s/5aAmTyPfxE",
+    "price": "¥10/罐",
+    "origin": "日本·东京"
   },
   {
     "name": "喜力经典",
@@ -455,7 +465,9 @@ const BUILTIN_BEERS = [
       "微微酸"
     ],
     "note": "淡爽，淡麦芽味，微微酸",
-    "img": "https://aka.doubaocdn.com/s/P6qgr5iTrh"
+    "img": "https://aka.doubaocdn.com/s/P6qgr5iTrh",
+    "price": "¥9/罐",
+    "origin": "荷兰"
   },
   {
     "name": "麒麟一番榨·秋味",
@@ -472,7 +484,9 @@ const BUILTIN_BEERS = [
       "一丝酒味"
     ],
     "note": "入口酸，微苦，麦芽香和辛口类似，似乎带一丝丝酸味，留苦味道不明显，有一丝酒味",
-    "img": "https://aka.doubaocdn.com/s/VAPBd1maXc"
+    "img": "https://aka.doubaocdn.com/s/VAPBd1maXc",
+    "price": "¥12/罐",
+    "origin": "日本"
   },
   {
     "name": "艾帝达姆",
@@ -489,7 +503,9 @@ const BUILTIN_BEERS = [
       "酒体较重"
     ],
     "note": "麦芽香，微酸，微微苦，酒体较重，留口轻",
-    "img": "https://aka.doubaocdn.com/s/LMfHU6pVVm"
+    "img": "https://aka.doubaocdn.com/s/LMfHU6pVVm",
+    "price": "¥88/瓶",
+    "origin": "西班牙·巴塞罗那"
   },
   {
     "name": "麒麟一番榨·冬限定",
@@ -506,7 +522,9 @@ const BUILTIN_BEERS = [
       "杀口感弱"
     ],
     "note": "较清新的麦芽香，入口微微酸，微苦，留口有一丝苦味时间不长，杀口感不那么强",
-    "img": "https://aka.doubaocdn.com/s/sKaWezVSSC"
+    "img": "https://aka.doubaocdn.com/s/sKaWezVSSC",
+    "price": "¥12/罐",
+    "origin": "日本"
   },
   {
     "name": "札幌",
@@ -523,7 +541,9 @@ const BUILTIN_BEERS = [
       "嗓子微苦"
     ],
     "note": "香气较其他淡色拉格稍重，杀口感强，入口有一丝甜，留口不重但是嗓子眼微苦",
-    "img": "https://aka.doubaocdn.com/s/VaSY4pQeWB"
+    "img": "https://aka.doubaocdn.com/s/VaSY4pQeWB",
+    "price": "¥15/罐",
+    "origin": "日本·北海道"
   },
   {
     "name": "鹅岛拉格",
@@ -540,7 +560,9 @@ const BUILTIN_BEERS = [
       "留口苦"
     ],
     "note": "依旧柑橘香，香气比IPA淡一点点，入口稍稍苦，颜色漂亮，杀口感适中，留口稍苦",
-    "img": "https://aka.doubaocdn.com/s/CyZaBm4m0C"
+    "img": "https://aka.doubaocdn.com/s/CyZaBm4m0C",
+    "price": "¥15/罐",
+    "origin": "美国·芝加哥"
   },
   {
     "name": "嘉士伯",
@@ -557,7 +579,9 @@ const BUILTIN_BEERS = [
       "留口轻"
     ],
     "note": "开罐大米味较明显，然后是小麦味，酒体颜色很浅，入口杀口感不强，有点酸，留口很轻",
-    "img": "https://aka.doubaocdn.com/s/V7unHjqWOy"
+    "img": "https://aka.doubaocdn.com/s/V7unHjqWOy",
+    "price": "¥6/罐",
+    "origin": "丹麦·哥本哈根"
   },
   {
     "name": "惠比寿·特级艾尔",
@@ -574,7 +598,9 @@ const BUILTIN_BEERS = [
       "后段苦"
     ],
     "note": "经典拉格香气，杀口感适中，中段香气明显，口感微酸，后段苦味显现",
-    "img": "https://aka.doubaocdn.com/s/GoKninIeb5"
+    "img": "https://aka.doubaocdn.com/s/GoKninIeb5",
+    "price": "¥16/罐",
+    "origin": "日本·东京"
   },
   {
     "name": "朝日超爽·全开盖",
@@ -590,7 +616,9 @@ const BUILTIN_BEERS = [
       "留口轻"
     ],
     "note": "淡淡的麦芽香，泡沫较密，酒体颜色较淡，杀口感不强，留口轻",
-    "img": "https://aka.doubaocdn.com/s/5aAmTyPfxE"
+    "img": "https://aka.doubaocdn.com/s/5aAmTyPfxE",
+    "price": "¥10/罐",
+    "origin": "日本·东京"
   },
   {
     "name": "札幌·黑标",
@@ -607,7 +635,9 @@ const BUILTIN_BEERS = [
       "留口不强"
     ],
     "note": "酒体颜色浅，泡沫还可以，麦芽香气比朝日稍浓（有甜感），杀口感较强，入口微酸，留口不强",
-    "img": "https://aka.doubaocdn.com/s/UUlWJLScze"
+    "img": "https://aka.doubaocdn.com/s/UUlWJLScze",
+    "price": "¥16/罐",
+    "origin": "日本·北海道"
   },
   {
     "name": "麒麟（晴风）",
@@ -624,7 +654,9 @@ const BUILTIN_BEERS = [
       "清新"
     ],
     "note": "酒体颜色金黄透亮很漂亮，香气很淡，入口杀口感强，比较清新，后段微微苦，留口轻",
-    "img": "https://aka.doubaocdn.com/s/bUfyM9PyZH"
+    "img": "https://aka.doubaocdn.com/s/bUfyM9PyZH",
+    "price": "¥8/罐",
+    "origin": "日本·东京"
   },
   {
     "name": "三得利PSB·零糖",
@@ -641,7 +673,9 @@ const BUILTIN_BEERS = [
       "后段苦"
     ],
     "note": "麦芽香还不错，酒体透亮泡沫足且绵密很漂亮，杀口感不算强，入口微酸后段苦，嗓子苦",
-    "img": "https://aka.doubaocdn.com/s/uintSsGKvK"
+    "img": "https://aka.doubaocdn.com/s/uintSsGKvK",
+    "price": "¥12/罐",
+    "origin": "日本·大阪"
   },
   {
     "name": "惠比寿·黑",
@@ -658,7 +692,9 @@ const BUILTIN_BEERS = [
       "收尾苦"
     ],
     "note": "麦芽混着淡淡的焦香的味道，入口微酸，杀口感可以，中段甜，收尾苦但是可以接受",
-    "img": "https://aka.doubaocdn.com/s/81bpN5Gpt8"
+    "img": "https://aka.doubaocdn.com/s/81bpN5Gpt8",
+    "price": "¥18/罐",
+    "origin": "日本·东京"
   },
   {
     "name": "札幌·金星",
@@ -675,7 +711,9 @@ const BUILTIN_BEERS = [
       "苦中带甜"
     ],
     "note": "麦芽香比较明显，酒体很亮，杀口感强，入口微微酸，中段苦味显现，后段有回甘，后续留口苦中带甜，层次挺丰富的",
-    "img": "https://aka.doubaocdn.com/s/mwdUpXPZOf"
+    "img": "https://aka.doubaocdn.com/s/mwdUpXPZOf",
+    "price": "¥18/罐",
+    "origin": "日本·北海道"
   },
   {
     "name": "麒麟ZERO·零糖",
@@ -692,7 +730,9 @@ const BUILTIN_BEERS = [
       "杀口感强"
     ],
     "note": "开罐是酒花香气与淡淡的柠檬香，杀口感强，入口清爽微微酸，后段有一点点的苦味，总体偏清爽",
-    "img": "https://aka.doubaocdn.com/s/9zV6RJTX8r"
+    "img": "https://aka.doubaocdn.com/s/9zV6RJTX8r",
+    "price": "¥9/罐",
+    "origin": "日本·东京"
   },
   {
     "name": "麒麟一番榨·零糖",
@@ -709,7 +749,9 @@ const BUILTIN_BEERS = [
       "杀口感适中"
     ],
     "note": "杀口感适中，入口微甜，后段点点苦，香气清新，很清爽",
-    "img": "https://aka.doubaocdn.com/s/0lLhYlq0mU"
+    "img": "https://aka.doubaocdn.com/s/0lLhYlq0mU",
+    "price": "¥10/罐",
+    "origin": "日本·东京"
   },
   {
     "name": "麒麟淡丽",
@@ -726,7 +768,9 @@ const BUILTIN_BEERS = [
       "苦中带酸"
     ],
     "note": "香气很薄，酒体颜色深，入口微甜，杀口感弱，后味苦中带微酸",
-    "img": "https://aka.doubaocdn.com/s/XEz0PPGwny"
+    "img": "https://aka.doubaocdn.com/s/XEz0PPGwny",
+    "price": "¥8/罐",
+    "origin": "日本·东京"
   },
   {
     "name": "札幌（零糖）",
@@ -743,7 +787,9 @@ const BUILTIN_BEERS = [
       "泡沫消散快"
     ],
     "note": "香气有点像芒果和菠萝蜜，杀口感强，入口不是很甜，一点点酸，后段苦味浮现，颜色偏深，泡沫消散快",
-    "img": "https://aka.doubaocdn.com/s/VaSY4pQeWB"
+    "img": "https://aka.doubaocdn.com/s/VaSY4pQeWB",
+    "price": "¥15/罐",
+    "origin": "日本·北海道"
   },
   {
     "name": "喜力星银",
@@ -759,7 +805,9 @@ const BUILTIN_BEERS = [
       "颜色不深"
     ],
     "note": "香气不浓，入口层次一般，但是杀口感很强，颜色不算深",
-    "img": "https://aka.doubaocdn.com/s/JLDMn3F4tf"
+    "img": "https://aka.doubaocdn.com/s/JLDMn3F4tf",
+    "price": "¥8/罐",
+    "origin": "中国"
   },
   {
     "name": "范佳乐·小麦白啤",
@@ -776,7 +824,9 @@ const BUILTIN_BEERS = [
       "留口短轻"
     ],
     "note": "味道极轻，微微苦，回口甘，留口短轻",
-    "img": "https://aka.doubaocdn.com/s/mYz4Ygj3Jv"
+    "img": "https://aka.doubaocdn.com/s/mYz4Ygj3Jv",
+    "price": "¥12/瓶",
+    "origin": "德国·慕尼黑"
   },
   {
     "name": "保拉纳·小麦白啤",
@@ -793,7 +843,9 @@ const BUILTIN_BEERS = [
       "微苦"
     ],
     "note": "小麦味，有话梅味，杀口感强，微苦，留口极轻，气泡较密",
-    "img": "https://aka.doubaocdn.com/s/Hkj68A09rP"
+    "img": "https://aka.doubaocdn.com/s/Hkj68A09rP",
+    "price": "¥12/瓶",
+    "origin": "德国·慕尼黑"
   },
   {
     "name": "击倒巨人·暴龙之王",
@@ -810,7 +862,9 @@ const BUILTIN_BEERS = [
       "浑浊厚重"
     ],
     "note": "热带水果香气，初入口甜味，回味较苦（柚子皮苦），留苦明显，酒体浑浊厚重，像果汁，到嗓子甚至有点辣，酒精味略明显",
-    "img": "https://aka.doubaocdn.com/s/0R6COVPbn4"
+    "img": "https://aka.doubaocdn.com/s/0R6COVPbn4",
+    "price": "¥28/罐",
+    "origin": "美国·爱荷华"
   },
   {
     "name": "击倒巨人·暴龙苏",
@@ -827,7 +881,9 @@ const BUILTIN_BEERS = [
       "嗓子苦"
     ],
     "note": "热带水果香气，味道似乎没有暴龙之王浓，酒体依旧果汁感，到嗓子眼依旧有点辣，有一丝丝酸味，嗓子眼也有苦感",
-    "img": "https://aka.doubaocdn.com/s/UgUVgbgScV"
+    "img": "https://aka.doubaocdn.com/s/UgUVgbgScV",
+    "price": "¥25/罐",
+    "origin": "美国·爱荷华"
   },
   {
     "name": "鹅岛IPA",
@@ -844,7 +900,9 @@ const BUILTIN_BEERS = [
       "留口苦"
     ],
     "note": "橘子香，麦芽香气稍轻，似乎有一点花椒味，杀口感很轻，苦味明显但依然是水果的苦（没有暴龙之王苦），颜色透亮但是稍深，留口也苦但是可以接受",
-    "img": "https://aka.doubaocdn.com/s/V08lYKLjLY"
+    "img": "https://aka.doubaocdn.com/s/V08lYKLjLY",
+    "price": "¥15/罐",
+    "origin": "美国·芝加哥"
   },
   {
     "name": "伯灵顿·小巫师",
@@ -861,7 +919,9 @@ const BUILTIN_BEERS = [
       "留口苦"
     ],
     "note": "热带水果香气，味道和暴龙苏类似，酒体没有击倒巨人浓厚，但反而让口感显得柔而不黏，有一丝酸味，有一点点辣嗓子，留口也有苦味但不重",
-    "img": "https://aka.doubaocdn.com/s/dz00Slr6z4"
+    "img": "https://aka.doubaocdn.com/s/dz00Slr6z4",
+    "price": "¥26/罐",
+    "origin": "美国·佛蒙特"
   },
   {
     "name": "车库计划·日出山谷",
@@ -878,7 +938,9 @@ const BUILTIN_BEERS = [
       "留口苦"
     ],
     "note": "香气可以，菠萝的味道直扑鼻腔，后调是热带水果混合的香气，酒体颜色浅但是也算较厚，入口有一点点酸味然后甜然后苦味冲上来的很快，留口苦但是不怎么辣",
-    "img": "https://aka.doubaocdn.com/s/yc5rl2weVi"
+    "img": "https://aka.doubaocdn.com/s/yc5rl2weVi",
+    "price": "¥30/罐",
+    "origin": "美国·加利福尼亚"
   },
   {
     "name": "健力士·世涛",
@@ -895,7 +957,9 @@ const BUILTIN_BEERS = [
       "微酸"
     ],
     "note": "巧克力香，麦芽香，焦香，苦味适中（像是黑巧的苦味），气泡绵密，好入口，杀口感不强，口感丝滑，有酸味",
-    "img": "https://aka.doubaocdn.com/s/2H50cVr2Lw"
+    "img": "https://aka.doubaocdn.com/s/2H50cVr2Lw",
+    "price": "¥12/罐",
+    "origin": "爱尔兰·都柏林"
   },
   {
     "name": "迷失海岸·花生酱巧克力牛奶世涛",
@@ -912,7 +976,9 @@ const BUILTIN_BEERS = [
       "留口微苦"
     ],
     "note": "酒体较厚，气泡绵密，巧克力花生酱牛奶味道浓厚，入口甜感，杀口感不强，留口微苦（黑巧）",
-    "img": "https://aka.doubaocdn.com/s/CUsNYwlPIt"
+    "img": "https://aka.doubaocdn.com/s/CUsNYwlPIt",
+    "price": "¥22/瓶",
+    "origin": "美国·加利福尼亚"
   },
   {
     "name": "打嗝海狸·摩卡金世涛",
@@ -929,7 +995,9 @@ const BUILTIN_BEERS = [
       "留口轻"
     ],
     "note": "咖啡和燕麦香气浓厚，酒体清澈，入口甜，杀口感适中，留口轻但是有巧克力的苦味和香味",
-    "img": "https://aka.doubaocdn.com/s/CUsXPiQcdB"
+    "img": "https://aka.doubaocdn.com/s/CUsXPiQcdB",
+    "price": "¥25/瓶",
+    "origin": "美国·加利福尼亚"
   },
   {
     "name": "帝磨栏·地狱与诅咒（榛子）",
@@ -946,7 +1014,9 @@ const BUILTIN_BEERS = [
       "有回甘"
     ],
     "note": "非常浓郁的巧克力和咖啡香以及能闻到榛子的香气，杀口感不强，入口微酸然后是黑巧的苦但还是有一些回甘的，还是挺苦的但是混着巧克力的香一起就没有那么苦。留口也很苦，而且没有巧克力那种香气了",
-    "img": "https://aka.doubaocdn.com/s/30ndtiEKB9"
+    "img": "https://aka.doubaocdn.com/s/30ndtiEKB9",
+    "price": "¥35/瓶",
+    "origin": "荷兰·布雷达"
   },
   {
     "name": "智美·蓝帽",
@@ -963,7 +1033,9 @@ const BUILTIN_BEERS = [
       "灼烧感"
     ],
     "note": "味道重，蒲地蓝气味（话梅，铁锈），酒体深黑红色，入口苦，留口苦，咽下后嗓子有灼烧感",
-    "img": "https://aka.doubaocdn.com/s/0CeNlmi4og"
+    "img": "https://aka.doubaocdn.com/s/0CeNlmi4og",
+    "price": "¥20/瓶",
+    "origin": "比利时·西佛兰德"
   },
   {
     "name": "罗斯福6号",
@@ -980,7 +1052,9 @@ const BUILTIN_BEERS = [
       "嗓子辣"
     ],
     "note": "淡淡的蒲地蓝味反而有点香，杀口感强，苦味正常，但是依旧是药的苦感，但是回口有一丝甜味，嗓子眼有点辣",
-    "img": "https://aka.doubaocdn.com/s/MFDD7Zx95X"
+    "img": "https://aka.doubaocdn.com/s/MFDD7Zx95X",
+    "price": "¥22/瓶",
+    "origin": "比利时·那慕尔"
   },
   {
     "name": "罗斯福8号",
@@ -997,7 +1071,9 @@ const BUILTIN_BEERS = [
       "嗓子辣"
     ],
     "note": "香气带有香料味道麦芽香浓，杀口感强，入口有点甜略苦但有回甘，嗓子稍稍辣",
-    "img": "https://aka.doubaocdn.com/s/9fUI4pVl4A"
+    "img": "https://aka.doubaocdn.com/s/9fUI4pVl4A",
+    "price": "¥24/瓶",
+    "origin": "比利时·那慕尔"
   },
   {
     "name": "罗斯福10号",
@@ -1014,7 +1090,9 @@ const BUILTIN_BEERS = [
       "留口蒲地蓝"
     ],
     "note": "酒精味重，味道很重，杀口感比罗6弱，入口甜但苦味立马显现，留口依旧蒲地蓝，嗓子有点辣",
-    "img": "https://aka.doubaocdn.com/s/9L2yiDO73k"
+    "img": "https://aka.doubaocdn.com/s/9L2yiDO73k",
+    "price": "¥26/瓶",
+    "origin": "比利时·那慕尔"
   },
   {
     "name": "督威·666",
@@ -1031,7 +1109,9 @@ const BUILTIN_BEERS = [
       "颜色淡"
     ],
     "note": "气味清香有一点柑橘香，杀口感适中，苦度适中，回口有一点点甜，有一点点辣嗓子，颜色较淡",
-    "img": "https://aka.doubaocdn.com/s/WyjVHzk4Xx"
+    "img": "https://aka.doubaocdn.com/s/WyjVHzk4Xx",
+    "price": "¥16/瓶",
+    "origin": "比利时·普尔斯"
   },
   {
     "name": "北平机器·机器皮尔森",
@@ -1047,7 +1127,9 @@ const BUILTIN_BEERS = [
       "留口微酸苦"
     ],
     "note": "开罐香气类似IPA，泡沫不密消散快，入口甜中带苦，留口有一点点酸和苦，整体像是轻度IPA",
-    "img": "https://aka.doubaocdn.com/s/tCFHEEKWmo"
+    "img": "https://aka.doubaocdn.com/s/tCFHEEKWmo",
+    "price": "¥18/罐",
+    "origin": "中国·北京"
   },
   {
     "name": "澳门啤酒",
@@ -1063,7 +1145,9 @@ const BUILTIN_BEERS = [
       "后味苦"
     ],
     "note": "柑橘麦芽香，杀口感正常，入口甜而不酸，后味苦",
-    "img": "https://aka.doubaocdn.com/s/vn9N4lYPYS"
+    "img": "https://aka.doubaocdn.com/s/vn9N4lYPYS",
+    "price": "¥10/罐",
+    "origin": "中国·澳门"
   },
   {
     "name": "雪花·老雪",
@@ -1079,7 +1163,9 @@ const BUILTIN_BEERS = [
       "有回甘"
     ],
     "note": "标准麦芽香，杀口感适中，入口微苦，尾调微苦，有回甘",
-    "img": "https://aka.doubaocdn.com/s/XT4kvveMyv"
+    "img": "https://aka.doubaocdn.com/s/XT4kvveMyv",
+    "price": "¥8/瓶",
+    "origin": "中国·沈阳"
   },
   {
     "name": "胖东来·精酿小麦啤",
@@ -1096,7 +1182,9 @@ const BUILTIN_BEERS = [
       "奇怪味"
     ],
     "note": "麦芽香气不重，气泡感不强，微微苦，留口极轻，有一股奇怪的味道",
-    "img": "https://aka.doubaocdn.com/s/vUTOg3YlKH"
+    "img": "https://aka.doubaocdn.com/s/vUTOg3YlKH",
+    "price": "¥12/罐",
+    "origin": "中国·河南许昌"
   },
   {
     "name": "青岛·白啤",
@@ -1113,7 +1201,9 @@ const BUILTIN_BEERS = [
       "留口轻"
     ],
     "note": "麦芽香比胖东来略重，气泡感更强，微微苦，留口极轻",
-    "img": "https://aka.doubaocdn.com/s/9cDba9AjlL"
+    "img": "https://aka.doubaocdn.com/s/9cDba9AjlL",
+    "price": "¥8/瓶",
+    "origin": "中国·山东青岛"
   },
   {
     "name": "胖东来·比利时白啤",
@@ -1130,7 +1220,9 @@ const BUILTIN_BEERS = [
       "层次丰富"
     ],
     "note": "闻起来麦芽香混着香辛料的味道，杀口感强，入口微酸层次丰富，留口香气重但不苦",
-    "img": "https://aka.doubaocdn.com/s/unXE24eQDJ"
+    "img": "https://aka.doubaocdn.com/s/unXE24eQDJ",
+    "price": "¥12/罐",
+    "origin": "中国·河南许昌"
   },
   {
     "name": "北平机器·德式小麦",
@@ -1146,7 +1238,9 @@ const BUILTIN_BEERS = [
       "后段奇怪"
     ],
     "note": "经典麦芽香，泡沫不重，杀口感适中，中段偏酸，后段有点奇怪",
-    "img": "https://aka.doubaocdn.com/s/i6uVUIGIkg"
+    "img": "https://aka.doubaocdn.com/s/i6uVUIGIkg",
+    "price": "¥16/罐",
+    "origin": "中国·北京"
   },
   {
     "name": "或不凡·黄河之水",
@@ -1162,7 +1256,9 @@ const BUILTIN_BEERS = [
       "后段苦"
     ],
     "note": "香气还行，入口微微甜，杀口感正常，后段苦而且没有足够的香气支撑会显得更苦",
-    "img": "https://aka.doubaocdn.com/s/AQAQb0Ftcz"
+    "img": "https://aka.doubaocdn.com/s/AQAQb0Ftcz",
+    "price": "¥15/罐",
+    "origin": "中国·江西"
   },
   {
     "name": "北平机器·巧克力牛奶世涛",
@@ -1179,7 +1275,9 @@ const BUILTIN_BEERS = [
       "泡沫少"
     ],
     "note": "巧克力牛奶香气，杀口感强，入口酸甜，后段苦，泡沫少",
-    "img": "https://aka.doubaocdn.com/s/wURDc7NJQu"
+    "img": "https://aka.doubaocdn.com/s/wURDc7NJQu",
+    "price": "¥18/罐",
+    "origin": "中国·北京"
   },
   {
     "name": "制乐厂·青年养老院",
@@ -1196,7 +1294,9 @@ const BUILTIN_BEERS = [
       "气泡感强"
     ],
     "note": "香气主体猕猴桃味道，伴有芒果青苹果香蕉味道，酒体厚重，入口甜然后紧接着的是酸然后再是淡淡的酒精的味道，气泡感较强，留口就像刚吃完猕猴桃的那一点点酸",
-    "img": "https://aka.doubaocdn.com/s/aInrpWS48O"
+    "img": "https://aka.doubaocdn.com/s/aInrpWS48O",
+    "price": "¥15/罐",
+    "origin": "中国"
   },
   {
     "name": "制乐厂·愤怒的牛马",
@@ -1213,7 +1313,9 @@ const BUILTIN_BEERS = [
       "留口酸"
     ],
     "note": "莓果的味道，有股铁锈味，酸甜混合酸味强烈不愧是古斯，杀口感还可以，酒体不是很重，留口也很酸",
-    "img": "https://aka.doubaocdn.com/s/xVSMEVtLXo"
+    "img": "https://aka.doubaocdn.com/s/xVSMEVtLXo",
+    "price": "¥16/罐",
+    "origin": "中国"
   },
   {
     "name": "制乐厂·开心的吗喽",
@@ -1229,7 +1331,9 @@ const BUILTIN_BEERS = [
       "草莓香"
     ],
     "note": "桃子番石榴的味道，香气没有那么重，入口先甜，后味酸，杀口感不强，留口有草莓和淡淡的桃子香",
-    "img": "https://aka.doubaocdn.com/s/wH6PBw5a5K"
+    "img": "https://aka.doubaocdn.com/s/wH6PBw5a5K",
+    "price": "¥16/罐",
+    "origin": "中国"
   },
   {
     "name": "制乐厂·黄色法拉利",
@@ -1245,7 +1349,9 @@ const BUILTIN_BEERS = [
       "桃核苦"
     ],
     "note": "杏子味道浓，入口先甜后酸，杀口感弱，留口轻，后调有一点点苦，像是桃核的那种苦",
-    "img": "https://aka.doubaocdn.com/s/LxDrizcBGs"
+    "img": "https://aka.doubaocdn.com/s/LxDrizcBGs",
+    "price": "¥16/罐",
+    "origin": "中国"
   },
   {
     "name": "和弦·阳光砂糖桔",
@@ -1262,7 +1368,9 @@ const BUILTIN_BEERS = [
       "奇怪味"
     ],
     "note": "开盖是砂糖桔混着酒精的香气，后味有点像芬达，酒体没有那么重，颜色很漂亮，杀口感适中，中段甜味明显，留口较轻但是有股奇怪的味道（酒精感感觉压的不是很好）",
-    "img": "https://aka.doubaocdn.com/s/0WK5hkbOkz"
+    "img": "https://aka.doubaocdn.com/s/0WK5hkbOkz",
+    "price": "¥14/罐",
+    "origin": "中国"
   },
   {
     "name": "山乘·月亮营业中",
@@ -1278,7 +1386,9 @@ const BUILTIN_BEERS = [
       "留口芒果香"
     ],
     "note": "芒果和杏子的味道，杀口感不强，非常非常酸，甜味不强，后味酸，很酸，但是留口有芒果的香气还有杏子的味道",
-    "img": "https://aka.doubaocdn.com/s/k5qHVcI9Rw"
+    "img": "https://aka.doubaocdn.com/s/k5qHVcI9Rw",
+    "price": "¥15/罐",
+    "origin": "中国"
   },
   {
     "name": "大九酿造·芭乐之旅",
@@ -1295,7 +1405,9 @@ const BUILTIN_BEERS = [
       "酒精感重"
     ],
     "note": "芭乐味道非常浓带有百香果的气息，酒体非常浓，入口酸甜一体，但是酒精感略重，后味有点苦",
-    "img": "https://aka.doubaocdn.com/s/d9OTxToGkT"
+    "img": "https://aka.doubaocdn.com/s/d9OTxToGkT",
+    "price": "¥18/罐",
+    "origin": "中国"
   },
   {
     "name": "古越龙山·黄啤",
@@ -1312,7 +1424,9 @@ const BUILTIN_BEERS = [
       "水感"
     ],
     "note": "闻着是淡淡的黄酒味和啤酒味，似乎有一点点话梅味，酒体颜色深，杀口感适中，入口甜，有一点水感，后味微微苦，有一点点酸",
-    "img": "https://aka.doubaocdn.com/s/TU6XBOOlSm"
+    "img": "https://aka.doubaocdn.com/s/TU6XBOOlSm",
+    "price": "¥10/瓶",
+    "origin": "中国·浙江绍兴"
   },
   {
     "name": "北平机器·绿豆沙",
@@ -1329,7 +1443,9 @@ const BUILTIN_BEERS = [
       "后段苦"
     ],
     "note": "闻起来一股厚重的绿豆沙味道，泡沫较密，入口甜，中段酸，后段微微苦",
-    "img": "https://aka.doubaocdn.com/s/FqHUL2J6V7"
+    "img": "https://aka.doubaocdn.com/s/FqHUL2J6V7",
+    "price": "¥18/罐",
+    "origin": "中国·北京"
   },
   {
     "name": "北平机器·明前龙井",
@@ -1346,7 +1462,9 @@ const BUILTIN_BEERS = [
       "微酸"
     ],
     "note": "淡淡的茶香味，泡沫细腻消散快，入口微微甜，中段微酸，不怎么苦，杀口感适中",
-    "img": "https://aka.doubaocdn.com/s/BEfL317w7F"
+    "img": "https://aka.doubaocdn.com/s/BEfL317w7F",
+    "price": "¥18/罐",
+    "origin": "中国·北京"
   }
 ]
 
@@ -1439,7 +1557,6 @@ function renderGrid(){
   }
   $('#beerGrid').innerHTML = list.map((b,i) => {
     const c = getGroupColor(b.group);
-    const tags = (b.tags||[]).slice(0,4);
     const img = b.img || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="%230b0c11"/></svg>';
     return `
     <article class="card" data-id="${i}" role="button" tabindex="0" aria-label="查看 ${esc(b.name)}" style="--sc:${c}">
@@ -1449,9 +1566,9 @@ function renderGrid(){
       </div>
       <div class="card-body">
         <h3>${esc(b.name)}</h3>
-        <div class="meta"><span>${esc(b.brand)}</span><span class="sep">·</span><span>${esc(b.country)}</span></div>
+        <div class="meta"><span>${esc(b.brand)}</span><span class="sep">·</span><span>${esc(b.origin||b.country)}</span></div>
         <span class="style-chip"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:${c};display:inline-block"></span>${esc(b.style)}</span>
-        <div class="tags">${tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+        ${b.price?`<div class="price">${esc(b.price)}<span class="ref">国内参考</span></div>`:''}
         <div class="hint"><span>${b.region==='import'?'IMPORTED':'LOCAL'} · ${b.group}</span><span class="favtxt">${b.fav?'★ FAVORITE':''}</span></div>
         ${b.isUser ? '<span class="userflag">MY RECORD</span>' : ''}
       </div>
@@ -1473,12 +1590,11 @@ function openDetail(index){
     <div class="detail-body">
       <h2>${esc(b.name)}</h2>
       <div class="sub-line">
-        <span>${esc(b.brand)}</span><span>·</span><span>${esc(b.country)}</span><span>·</span>
+        <span>${esc(b.brand)}</span><span>·</span><span>${esc(b.origin||b.country)}</span><span>·</span>
         <span class="c">${esc(b.style)}</span><span>·</span><span>${esc(b.group)}星群</span>
       </div>
+      ${b.price?`<div class="detail-price">${esc(b.price)}<span class="ref">国内参考价</span></div>`:''}
       ${b.fav ? '<div class="detail-fav">'+starSVG()+' 我的最爱 · 发光恒星</div>' : ''}
-      <div class="detail-note" style="margin-top:18px">${esc(b.note)}</div>
-      <div class="detail-tags">${(b.tags||[]).map(t=>`<span>${esc(t)}</span>`).join('')}</div>
       ${b.isUser ? `<button class="detail-del" id="delBeer">删除这条记录</button>` : ''}
     </div>`;
   $('#delBeer')?.addEventListener('click', () => {
