@@ -158,6 +158,9 @@ a{color:inherit}
 .card .meta{font-size:11.5px;color:var(--faint);letter-spacing:.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .card .meta .sep{opacity:.5}
 .card .style-chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--sc,var(--gold));border:1px solid color-mix(in srgb,var(--sc,var(--gold)) 38%,transparent);background:color-mix(in srgb,var(--sc,var(--gold)) 8%,transparent);padding:5px 13px;border-radius:999px;width:fit-content}
+.card .chip-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card .origin-chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.045);padding:5px 12px;border-radius:999px}
+.card .origin-chip .odot{width:7px;height:7px;border-radius:50%;flex:none;opacity:.85}
 .card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
 .card .tags span{font-size:10.5px;color:var(--muted);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:3px 9px;border-radius:999px}
 .card .price{display:flex;align-items:baseline;gap:7px;font-family:var(--digit);font-size:17px;color:var(--gold);font-weight:700;margin-top:auto;padding-top:2px}
@@ -219,7 +222,7 @@ a{color:inherit}
 .detail-hero img{max-width:76%;max-height:82%;width:auto;height:auto;object-fit:contain;display:block;filter:drop-shadow(0 24px 32px rgba(64,48,22,.3))}
 .detail-body{padding:26px 32px 32px;position:relative;margin-top:-30px}
 .detail-body h2{font-family:var(--serif);font-size:28px;font-weight:600;letter-spacing:2px;line-height:1.3;color:var(--ink);padding-right:44px}
-.detail-body .sub-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:10px 0 24px;font-size:13px;color:var(--faint);letter-spacing:.5px}
+.detail-body .sub-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:10px 0 24px;font-size:14px;color:var(--muted);letter-spacing:.5px}
 .detail-body .sub-line .c{color:var(--sc,var(--gold))}
 .detail-price{display:inline-flex;align-items:baseline;gap:9px;font-family:var(--digit);font-size:24px;color:var(--gold);font-weight:700;margin:0 0 22px}
 .detail-price .ref{font-family:var(--body);font-size:11px;color:var(--faint);font-weight:300;letter-spacing:.5px}
@@ -1563,8 +1566,11 @@ function renderGrid(){
       </div>
       <div class="card-body">
         <h3>${esc(b.name)}</h3>
-        <div class="meta"><span>${esc(b.brand)}</span><span class="sep">·</span><span>${esc(b.origin||b.country)}</span></div>
-        <span class="style-chip"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:${c};display:inline-block"></span>${esc(b.style)}</span>
+        <div class="meta"><span>${esc(b.brand)}</span></div>
+        <div class="chip-row">
+          <span class="style-chip"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:${c};display:inline-block"></span>${esc(b.style)}</span>
+          <span class="origin-chip"><span class="odot" style="background:${c}"></span>${esc(b.origin||b.country)}</span>
+        </div>
         ${b.price?`<div class="price">${esc(b.price)}<span class="ref">国内参考</span></div>`:''}
         <div class="hint"><span>${b.region==='import'?'IMPORTED':'LOCAL'} · ${b.group}</span><span class="favtxt">${b.fav?'★ FAVORITE':''}</span></div>
         ${b.isUser ? '<span class="userflag">MY RECORD</span>' : ''}
