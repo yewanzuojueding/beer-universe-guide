@@ -96,7 +96,8 @@ a{color:inherit}
 .hero-kicker::after{background:linear-gradient(90deg,var(--gold),transparent)}
 .hero h1{font-family:var(--serif);font-size:clamp(42px,7.5vw,86px);line-height:1.12;font-weight:600;letter-spacing:6px;color:var(--ink)}
 .hero h1 .substroke{display:block;font-size:clamp(18px,2.6vw,30px);font-weight:500;letter-spacing:14px;color:var(--gold);margin-top:10px;text-indent:14px}
-.hero-sub{margin-top:22px;max-width:520px;color:var(--muted);font-size:15px;font-weight:300;letter-spacing:.5px}
+.hero-slogan{margin-top:26px;font-family:var(--serif);font-size:clamp(16px,2.2vw,21px);letter-spacing:8px;color:var(--gold);opacity:.9;text-shadow:0 0 22px rgba(200,164,92,.35)}
+.hero-sub{margin-top:16px;max-width:520px;color:var(--muted);font-size:15px;font-weight:300;letter-spacing:.5px}
 .hero-stats{display:flex;gap:clamp(24px,6vw,64px);margin-top:44px;flex-wrap:wrap;justify-content:center}
 .hstat{text-align:center;min-width:80px}
 .hstat .n{font-family:var(--digit);font-size:clamp(24px,3.6vw,36px);font-weight:700;color:var(--ink);display:block;line-height:1.1}
@@ -245,6 +246,9 @@ a{color:inherit}
 .rb-fill{height:100%;border-radius:999px;opacity:.88;transition:width .6s}
 .rb-val{font-family:var(--digit);font-size:14px;font-weight:700;width:20px;text-align:right}
 .radar-note{font-size:11px;color:var(--faint);margin-top:16px;letter-spacing:.3px;line-height:1.8}
+.radar-slogan{margin-top:14px;text-align:center;font-family:var(--serif);font-size:12px;letter-spacing:4px;color:var(--gold);opacity:.75}
+.detail-tagline{margin-top:26px;padding-top:18px;border-top:1px dashed rgba(255,255,255,.08);text-align:center;font-family:var(--serif);font-size:12.5px;letter-spacing:3px;color:var(--muted);opacity:.8}
+.m-slogan{display:block;margin-top:4px;font-family:var(--serif);letter-spacing:2px;color:var(--gold);opacity:.8}
 .card .radar-btn{margin-top:14px;width:100%;padding:8px 0;border-radius:999px;border:1px solid color-mix(in srgb,var(--sc,var(--gold)) 40%,transparent);background:color-mix(in srgb,var(--sc,var(--gold)) 10%,transparent);color:var(--sc,var(--gold));font-size:12px;letter-spacing:2px;cursor:pointer;font-family:var(--body);transition:background .25s}
 .card .radar-btn:hover{background:color-mix(in srgb,var(--sc,var(--gold)) 20%,transparent)}
 .card .taste-badge{position:absolute;top:10px;left:10px;font-size:10.5px;letter-spacing:1px;padding:4px 9px;border-radius:999px;backdrop-filter:blur(6px)}
@@ -332,7 +336,7 @@ a{color:inherit}
 
 <!-- ===== 顶部导航 ===== -->
 <header class="topbar">
-  <div class="brand" data-goto="top">
+  <div class="brand" data-goto="top" title="你的酒史，即是星图">
     <div class="mark"></div>
     <div><b>啤酒宇宙指南</b><em>BEER UNIVERSE GUIDE</em></div>
   </div>
@@ -348,6 +352,7 @@ a{color:inherit}
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-kicker">Personal Craft-Beer Archive</div>
     <h1>啤酒宇宙指南<span class="substroke">品鉴 · 归档 · 寻味</span></h1>
+    <div class="hero-slogan">以舌为镜 · 观测星辰</div>
     <p class="hero-sub">每一杯喝过的精酿，都是一颗可回访的风味星球。按星系与星群归档，想找哪一杯，搜索即达。</p>
     <div class="hero-stats" id="heroStats"></div>
     <div class="searchwrap">
@@ -410,8 +415,8 @@ a{color:inherit}
 
 <footer class="footer">
   <div class="star-line">✦ ✦ ✦</div>
-  <div>啤酒宇宙指南 · 由你的 57 次品鉴构筑而成</div>
-  <div style="margin-top:6px;opacity:.7">持续探索，把好味道都收进星空</div>
+  <div>啤酒宇宙指南 · 由 <span id="footerStat">0</span> 颗风味星球构筑而成</div>
+  <div style="margin-top:8px;opacity:.75;letter-spacing:3px">酒会喝完，宇宙不会</div>
 </footer>
 
 <!-- ===== 详情弹层 ===== -->
@@ -429,7 +434,7 @@ a{color:inherit}
   <div class="modal-box">
     <button class="modal-close" data-close="add" aria-label="关闭">✕</button>
     <h2 class="m-title">记录一颗新星球</h2>
-    <p class="m-sub">喝完就记，存进本机浏览器，下次想找随时可搜。</p>
+    <p class="m-sub">喝完就记，存进本机浏览器，下次想找随时可搜。<span class="m-slogan">把喝过的酒，酿成自己的宇宙。</span></p>
     <div class="form-grid">
       <div class="field"><label for="fName">酒名 *</label><input id="fName" type="text" placeholder="如：击倒巨人暴龙之王"></div>
       <div class="field"><label for="fBrand">厂牌 / 品牌</label><input id="fBrand" type="text" placeholder="如：击倒巨人"></div>
@@ -2817,6 +2822,7 @@ function renderHeroStats(){
   const fav = beers.filter(b=>b.fav).length;
   const local = beers.filter(b=>b.region==='local').length;
   const imp = beers.filter(b=>b.region==='import').length;
+  const fs = $('#footerStat'); if (fs) fs.textContent = total;
   $('#heroStats').innerHTML = `
     <div class="hstat"><span class="n">${total}</span><span>已探索星球</span></div>
     <div class="hstat"><span class="n gold">${fav}</span><span>我的最爱</span></div>
@@ -2879,7 +2885,7 @@ function renderGrid(){
       <div class="empty">
         <div class="ring"></div>
         <h3>这片星域还没有记录</h3>
-        <p>换个关键词试试，或者把这杯新酒加入你的宇宙。</p>
+        <p>喝空的瓶子，是坠落的星星。换个关键词，或把这杯新酒酿进你的宇宙。</p>
         <button class="btn" id="emptyClear">清除筛选</button>
         <button class="btn primary" id="emptyAdd">记录新酒</button>
       </div>`;
@@ -2957,6 +2963,7 @@ function openDetail(index){
           </div>
         </div>
         <div class="radar-note">维度释义 · 风味=香气与味道浓郁度 / 杀口感=气泡刺激感 / 苦度=苦味强度 / 醇厚=酒体厚重度 / 干净度=收口利落程度，评分综合你的品鉴记录与电商普遍评价</div>
+        <div class="radar-slogan">为每一口酒，标注它的星轨</div>
       </div>`:''}
       <div class="taste-sec">
         <div class="taste-head"><span class="taste-title">我的品鉴</span><span class="taste-sub">覆盖参考分 · 短评可被搜索</span></div>
@@ -2990,6 +2997,7 @@ function openDetail(index){
             </button>`).join('')}
         </div>
       </div>`:''}
+      <div class="detail-tagline">我喝过的每一口，都在这里找到了轨道</div>
     </div>`;
   const cv = $('#radarCv');
   if (cv) drawRadar(cv, b.score, c);
@@ -3019,8 +3027,8 @@ function openDetail(index){
     };
     saveTasting(t);
     refreshAll();
-    $('#tasteSave').textContent = '已保存 ✓';
-    setTimeout(()=>{ $('#tasteSave').textContent = '保存品鉴'; }, 1200);
+    $('#tasteSave').textContent = '已保存 · 宇宙多了一颗星';
+    setTimeout(()=>{ $('#tasteSave').textContent = '保存品鉴'; }, 1400);
   });
   /* 推荐卡片 */
   $$('.rec-card', $('#detailContent')).forEach(cd=>{
