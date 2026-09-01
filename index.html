@@ -244,6 +244,46 @@ a{color:inherit}
 .radar-note{font-size:11px;color:var(--faint);margin-top:16px;letter-spacing:.3px;line-height:1.8}
 .card .radar-btn{margin-top:14px;width:100%;padding:8px 0;border-radius:999px;border:1px solid color-mix(in srgb,var(--sc,var(--gold)) 40%,transparent);background:color-mix(in srgb,var(--sc,var(--gold)) 10%,transparent);color:var(--sc,var(--gold));font-size:12px;letter-spacing:2px;cursor:pointer;font-family:var(--body);transition:background .25s}
 .card .radar-btn:hover{background:color-mix(in srgb,var(--sc,var(--gold)) 20%,transparent)}
+.card .taste-badge{position:absolute;top:10px;left:10px;font-size:10.5px;letter-spacing:1px;padding:4px 9px;border-radius:999px;backdrop-filter:blur(6px)}
+.card .taste-badge.had{background:rgba(112,182,135,.16);color:#7fca96;border:1px solid rgba(112,182,135,.45)}
+.card .taste-badge.want{background:rgba(200,164,92,.16);color:var(--gold);border:1px solid rgba(200,164,92,.45)}
+.card .hint .mytxt{color:var(--gold);font-family:var(--digit);font-size:11px;letter-spacing:.5px}
+.sort-label{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--faint);letter-spacing:.5px}
+.sort-label select{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;color:var(--ink);font-family:var(--body);font-size:12px;padding:7px 30px 7px 14px;outline:none;cursor:pointer}
+.sort-label select option{background:#14151d;color:var(--ink)}
+/* 我的品鉴 */
+.taste-sec{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.07)}
+.taste-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px}
+.taste-title{font-family:var(--serif);font-size:16px;letter-spacing:2px;color:var(--ink)}
+.taste-sub{font-size:11px;color:var(--faint);letter-spacing:.5px}
+.taste-status{display:flex;gap:9px;margin-bottom:16px}
+.tchip{padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);font-size:12.5px;cursor:pointer;font-family:var(--body);letter-spacing:1px;transition:all .25s}
+.tchip.had.active{color:#7fca96;border-color:rgba(112,182,135,.55);background:rgba(112,182,135,.13)}
+.tchip.want.active{color:var(--gold);border-color:rgba(200,164,92,.55);background:var(--gold-dim)}
+.tchip.clear.active{color:var(--ink);border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.06)}
+.taste-score{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.ts-lbl{font-size:12.5px;color:var(--faint);letter-spacing:1px;width:54px;flex:none}
+.ts-stars{display:flex;gap:2px}
+.ts-star{font-size:17px;color:rgba(255,255,255,.16);cursor:pointer;transition:color .2s,transform .15s}
+.ts-star.on{color:var(--gold);text-shadow:0 0 10px rgba(200,164,92,.45)}
+.ts-star:hover{transform:scale(1.15)}
+.ts-val{font-family:var(--digit);font-size:18px;font-weight:700;color:var(--gold);min-width:26px}
+.taste-note{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.taste-note input[type="text"]{flex:1;min-width:180px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:var(--body);font-size:13px;padding:10px 13px;outline:none}
+.taste-note input[type="text"]:focus{border-color:rgba(200,164,92,.55)}
+.taste-note input[type="date"]{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:var(--body);font-size:12.5px;padding:10px 12px;outline:none;color-scheme:dark}
+.taste-save{padding:10px 22px;font-size:12.5px;letter-spacing:2px}
+/* 口味相近推荐 */
+.rec-sec{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.07)}
+.rec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px}
+.rec-title{font-family:var(--serif);font-size:16px;letter-spacing:2px;color:var(--ink)}
+.rec-sub{font-size:11px;color:var(--faint);letter-spacing:.5px}
+.rec-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rec-card{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.025);cursor:pointer;transition:all .25s;font-family:var(--body)}
+.rec-card:hover{border-color:color-mix(in srgb,var(--sc,var(--gold)) 45%,transparent);background:color-mix(in srgb,var(--sc,var(--gold)) 7%,transparent);transform:translateY(-2px)}
+.rec-card img{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
+.rc-name{font-size:12px;color:var(--ink);text-align:center;line-height:1.4}
+.rc-style{font-size:10.5px;color:var(--faint);letter-spacing:.5px;text-align:center}
 
 /* 添加表单 */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:8px;padding:26px 32px 0}
@@ -275,6 +315,9 @@ a{color:inherit}
   .hint-line{padding-left:20px;padding-right:20px}
   .detail-body{padding:22px 20px 26px}
   .radar-wrap{grid-template-columns:1fr}
+  .rec-cards{grid-template-columns:repeat(2,1fr)}
+  .sort-label{width:100%}
+  .sort-label select{flex:1}
   .btn{font-size:12.5px;padding:8px 13px}
 }
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}}
@@ -316,6 +359,17 @@ a{color:inherit}
     <div class="galaxy-tabs" id="galaxyTabs" role="tablist"></div>
     <div class="style-filter" id="styleFilter"></div>
     <div class="filter-row">
+      <label class="sort-label">排序
+        <select id="sortSelect">
+          <option value="default">默认</option>
+          <option value="priceAsc">价格低 → 高</option>
+          <option value="priceDesc">价格高 → 低</option>
+          <option value="flavor">风味最高</option>
+          <option value="carbonation">杀口感最高</option>
+          <option value="body">醇厚最高</option>
+          <option value="clean">干净度最高</option>
+        </select>
+      </label>
       <label class="love-toggle">
         <input type="checkbox" id="loveOnly"><span class="track"></span><span>只看最爱</span>
       </label>
@@ -2287,7 +2341,8 @@ const BUILTIN_BEERS = [
    状态层
    ============================================================ */
 const LS_KEY = 'bug_user_beers_v1';
-const state = { region:'all', group:'all', keyword:'', loveOnly:false };
+const TASTING_KEY = 'bug_tasting_v1';
+const state = { region:'all', group:'all', keyword:'', loveOnly:false, sort:'default' };
 
 function getAllBeers(){
   let user = [];
@@ -2295,6 +2350,13 @@ function getAllBeers(){
   return [...user.map(b => ({...b, isUser:true})), ...BUILTIN_BEERS];
 }
 function saveUserBeers(list){ localStorage.setItem(LS_KEY, JSON.stringify(list)); }
+/* 个人品鉴记录：{ [key]: {status:'had'|'want'|'', myScore:number|null, myNote:'', date:''} } */
+function getTasting(){
+  try { return JSON.parse(localStorage.getItem(TASTING_KEY) || '{}'); } catch(e){ return {}; }
+}
+function saveTasting(t){ localStorage.setItem(TASTING_KEY, JSON.stringify(t)); }
+function beerKey(b){ return b._t ? 'u'+b._t : b.name; }
+function tastingOf(b){ return getTasting()[beerKey(b)] || null; }
 function getGroupColor(g){ return STYLE_GROUPS[g] ? STYLE_GROUPS[g].color : '#c8a45c'; }
 
 /* ============================================================
@@ -2339,19 +2401,33 @@ function renderControls(){
 /* ============================================================
    渲染：卡片网格
    ============================================================ */
+function parsePrice(p){
+  const m = String(p||'').match(/[0-9]+(?:\.[0-9]+)?/);
+  return m ? parseFloat(m[0]) : Infinity;
+}
 function filterBeers(){
   const beers = getAllBeers();
   const kw = state.keyword.trim().toLowerCase();
-  return beers.filter(b => {
+  const tasting = getTasting();
+  const list = beers.filter(b => {
     if (state.region!=='all' && b.region!==state.region) return false;
     if (state.group!=='all' && b.group!==state.group) return false;
     if (state.loveOnly && !b.fav) return false;
     if (kw){
-      const hay = [b.name,b.brand,b.country,b.style,b.group,b.note,...(b.tags||[])].join(' ').toLowerCase();
+      const t = tasting[beerKey(b)];
+      const hay = [b.name,b.brand,b.country,b.style,b.group,b.note,...(b.tags||[]), t?t.myNote:'', t?(t.status==='had'?'已喝':(t.status==='want'?'想喝':'')):''].join(' ').toLowerCase();
       if (!hay.includes(kw)) return false;
     }
     return true;
   });
+  const s = state.sort;
+  if (s==='priceAsc') list.sort((a,b)=>parsePrice(a.price)-parsePrice(b.price));
+  else if (s==='priceDesc') list.sort((a,b)=>parsePrice(b.price)-parsePrice(a.price));
+  else if (s==='flavor') list.sort((a,b)=>((b.score||[0])[0])-((a.score||[0])[0]));
+  else if (s==='carbonation') list.sort((a,b)=>((b.score||[0,0])[1])-((a.score||[0,0])[1]));
+  else if (s==='body') list.sort((a,b)=>((b.score||[0,0,0])[3])-((a.score||[0,0,0])[3]));
+  else if (s==='clean') list.sort((a,b)=>((b.score||[0,0,0,0])[4])-((a.score||[0,0,0,0])[4]));
+  return list;
 }
 
 function renderGrid(){
@@ -2372,11 +2448,13 @@ function renderGrid(){
   }
   $('#beerGrid').innerHTML = list.map((b,i) => {
     const c = getGroupColor(b.group);
+    const taste = tastingOf(b);
     const img = b.img || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="%230b0c11"/></svg>';
     return `
     <article class="card" data-id="${i}" role="button" tabindex="0" aria-label="查看 ${esc(b.name)}" style="--sc:${c}">
       <div class="card-img">
         <div class="fav-badge ${b.fav?'show':''}">${starSVG()}</div>
+        ${taste?`<div class="taste-badge ${taste.status}">${taste.status==='had'?'已喝':'想喝'}</div>`:''}
         <img src="${img}" alt="${esc(b.name)}" loading="lazy">
       </div>
       <div class="card-body">
@@ -2386,7 +2464,7 @@ function renderGrid(){
           <span class="origin-chip"><span class="odot" style="background:${c}"></span>${esc(b.origin||b.country)}</span>
         </div>
         ${b.price?`<div class="price">${esc(b.price)}<span class="ref">国内参考</span></div>`:''}
-        <div class="hint"><span>${b.region==='import'?'IMPORTED':'LOCAL'} · ${b.group}</span><span class="favtxt">${b.fav?'★ FAVORITE':''}</span></div>
+        <div class="hint"><span>${b.region==='import'?'IMPORTED':'LOCAL'} · ${b.group}</span><span class="favtxt">${b.fav?'★ FAVORITE':''}</span>${taste&&taste.myScore?`<span class="mytxt">MY ${taste.myScore}</span>`:''}</div>
         ${b.score?`<button class="radar-btn" tabindex="-1">◉ 五维评分</button>`:''}
         ${b.isUser ? '<span class="userflag">MY RECORD</span>' : ''}
       </div>
@@ -2402,6 +2480,11 @@ function openDetail(index){
   const b = beers[index];
   if (!b) return;
   const c = getGroupColor(b.group);
+  const taste = tastingOf(b);
+  const d=new Date();
+  const today = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  let pstatus = taste?taste.status:'';
+  let pscore = taste&&taste.myScore?taste.myScore:null;
   const img = b.img || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675"><rect width="1200" height="675" fill="%230b0c11"/></svg>';
   $('#detailContent').innerHTML = `
     <div class="detail-hero"><img src="${img}" alt="${esc(b.name)}"></div>
@@ -2428,11 +2511,74 @@ function openDetail(index){
         </div>
         <div class="radar-note">维度释义 · 风味=香气与味道浓郁度 / 杀口感=气泡刺激感 / 苦度=苦味强度 / 醇厚=酒体厚重度 / 干净度=收口利落程度，评分综合你的品鉴记录与电商普遍评价</div>
       </div>`:''}
+      <div class="taste-sec">
+        <div class="taste-head"><span class="taste-title">我的品鉴</span><span class="taste-sub">覆盖参考分 · 短评可被搜索</span></div>
+        <div class="taste-status">
+          <button class="tchip clear ${pstatus===''?'active':''}" data-t="clear">未标记</button>
+          <button class="tchip had ${pstatus==='had'?'active':''}" data-t="had">✓ 已喝</button>
+          <button class="tchip want ${pstatus==='want'?'active':''}" data-t="want">☆ 想喝</button>
+        </div>
+        <div class="taste-score">
+          <span class="ts-lbl">我的评分</span>
+          <div class="ts-stars">${Array.from({length:10},(_,i)=>i+1).map(n=>`<span class="ts-star ${pscore>=n?'on':''}" data-n="${n}">★</span>`).join('')}</div>
+          <span class="ts-val" id="tasteVal">${pscore||'—'}</span>
+        </div>
+        <div class="taste-note">
+          <input id="tasteNote" type="text" placeholder="写一句你的感受（可被搜索）" value="${taste?esc(taste.myNote||''):''}" maxlength="40">
+          <input id="tasteDate" type="date" value="${taste&&taste.date?taste.date:today}">
+          <button class="btn primary taste-save" id="tasteSave">保存品鉴</button>
+        </div>
+      </div>
       ${b.fav ? '<div class="detail-fav">'+starSVG()+' 我的最爱 · 发光恒星</div>' : ''}
       ${b.isUser ? `<button class="detail-del" id="delBeer">删除这条记录</button>` : ''}
+      ${b.score?`
+      <div class="rec-sec">
+        <div class="rec-head"><span class="rec-title">口味相近的星球</span><span class="rec-sub">按五维雷达相似度推荐</span></div>
+        <div class="rec-cards">
+          ${similarBeers(b).map(s=>`
+            <button class="rec-card" data-key="${beerKey(s)}" style="--sc:${getGroupColor(s.group)}">
+              <img src="${s.img}" alt="${esc(s.name)}" loading="lazy">
+              <span class="rc-name">${esc(s.name)}</span>
+              <span class="rc-style">${esc(s.style)}</span>
+            </button>`).join('')}
+        </div>
+      </div>`:''}
     </div>`;
   const cv = $('#radarCv');
   if (cv) drawRadar(cv, b.score, c);
+  /* 品鉴状态切换 */
+  $$('.tchip', $('#detailContent')).forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      pstatus = btn.dataset.t==='clear' ? '' : btn.dataset.t;
+      $$('.tchip', $('#detailContent')).forEach(x=>x.classList.toggle('active', x.dataset.t===btn.dataset.t));
+    });
+  });
+  /* 评分 */
+  $$('.ts-star', $('#detailContent')).forEach(st=>{
+    st.addEventListener('click', ()=>{
+      pscore = +st.dataset.n;
+      $$('.ts-star', $('#detailContent')).forEach(x=>x.classList.toggle('on', +x.dataset.n<=pscore));
+      $('#tasteVal').textContent = pscore;
+    });
+  });
+  /* 保存 */
+  $('#tasteSave')?.addEventListener('click', ()=>{
+    const t = getTasting();
+    t[beerKey(b)] = {
+      status: pstatus,
+      myScore: pscore,
+      myNote: $('#tasteNote').value.trim(),
+      date: $('#tasteDate').value || today
+    };
+    saveTasting(t);
+    refreshAll();
+    $('#tasteSave').textContent = '已保存 ✓';
+    setTimeout(()=>{ $('#tasteSave').textContent = '保存品鉴'; }, 1200);
+  });
+  /* 推荐卡片 */
+  $$('.rec-card', $('#detailContent')).forEach(cd=>{
+    cd.addEventListener('click', ()=> openDetailByKey(cd.dataset.key));
+  });
   $('#delBeer')?.addEventListener('click', () => {
     if (!confirm('确定要删除这条你自己添加的记录吗？')) return;
     let user=[]; try{ user=JSON.parse(localStorage.getItem(LS_KEY)||'[]'); }catch(e){}
@@ -2445,6 +2591,26 @@ function openDetail(index){
   });
   openModal('detail');
 }
+
+function similarBeers(b, n=3){
+  if(!b.score) return [];
+  const all = getAllBeers().filter(x => beerKey(x)!==beerKey(b) && x.score && x.img);
+  return all.map(x => ({
+    b:x,
+    d: Math.sqrt(x.score.reduce((s,v,i)=> s + (v - b.score[i])**2, 0))
+  })).sort((a,b)=>a.d-b.d).slice(0,n).map(o=>o.b);
+}
+function openDetailByKey(key){
+  state.region='all'; state.group='all'; state.keyword=''; state.loveOnly=false; state.sort='default';
+  const si=$('#sortSelect'); if(si) si.value='default';
+  const si2=$('#searchInput'); if(si2) si2.value='';
+  const li=$('#loveOnly'); if(li) li.checked=false;
+  refreshAll();
+  const list = filterBeers();
+  const idx = list.findIndex(x=>beerKey(x)===key);
+  if(idx>=0) openDetail(idx);
+}
+
 
 function hexA(hex, a){
   const m=hex.replace('#','');
@@ -2600,6 +2766,7 @@ $('#beerGrid').addEventListener('keydown', e => { if(e.key!=='Enter'&&e.key!==' 
 $('#btnLove').addEventListener('click', () => { state.loveOnly=!state.loveOnly; $('#loveOnly').checked=state.loveOnly; $('#btnLove').classList.toggle('on',state.loveOnly); refreshAll(); document.querySelector('.beer-grid').scrollIntoView(); });
 $('#btnAdd').addEventListener('click', openAddForm);
 $('#saveBeer').addEventListener('click', saveNewBeer);
+$('#sortSelect').addEventListener('change', e => { state.sort=e.target.value; renderGrid(); });
 $('.brand').addEventListener('click', () => { resetFilters(); window.scrollTo({top:0,behavior:'smooth'}); });
 $$('.modal').forEach(m => {
   m.addEventListener('click', e => {
